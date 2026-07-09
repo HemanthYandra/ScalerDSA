@@ -66,7 +66,8 @@ public class SumOfEvenIndices {
         }
 
         long[] pSum = new long[A.length];
-        pSum[0] = A[0]; // Initialize with the 1st element since index 0 is an even index.
+        // Initialize with the first element since index 0 is an even index.
+        pSum[0] = A[0];
 
         for (int i = 1; i < A.length; i++) {
             // If the current index is even, add its value to the prefix sum.

@@ -328,3 +328,381 @@ Therefore, the answer is:
 ```text
 [0, 35]
 ```
+
+---
+
+# Q4. Special Index
+
+## Problem Description
+
+Given an integer array `A` of size `N`, find the number of indices such that removing the element at that index makes the sum of elements at even indices equal to the sum of elements at odd indices in the resulting array.
+
+> **Note:** After removing an element, the indices of all subsequent elements shift left by one.
+
+---
+
+## Problem Constraints
+
+- `1 <= N <= 10^5`
+- `-10^5 <= A[i] <= 10^5`
+- Sum of all elements of `A` <= `10^9`
+
+---
+
+## Input Format
+
+- The first argument is an integer array `A` of size `N`.
+
+---
+
+## Output Format
+
+Return the count of indices such that removing the element at those indices makes the sum of even-indexed elements equal to the sum of odd-indexed elements.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [2, 1, 6, 4]
+```
+
+### Input 2
+
+```text
+A = [1, 1, 1]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+1
+```
+
+### Output 2
+
+```text
+3
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+Removing `A[1]` modifies the array to:
+
+```text
+[2, 6, 4]
+```
+
+- Sum of even-indexed elements = `2 + 4 = 6`
+- Sum of odd-indexed elements = `6`
+
+Since both sums are equal, index `1` is a special index.
+
+Therefore, the answer is:
+
+```text
+1
+```
+
+### Explanation 2
+
+Removing any one of the three elements results in:
+
+```text
+[1, 1]
+```
+
+In each case:
+
+- Sum of even-indexed elements = `1`
+- Sum of odd-indexed elements = `1`
+
+Hence, all three indices are special.
+
+Therefore, the answer is:
+
+```text
+3
+```
+
+---
+
+# Q5. Even Numbers in a Range
+
+## Problem Description
+
+You are given an integer array `A` of length `N` and `Q` queries represented by a 2D array `B` of size `Q × 2`.
+
+Each query contains two integers `L` and `R`, representing the range `[L, R]`.
+
+For each query, find the number of **even elements** in the subarray `A[L...R]`.
+
+---
+
+## Problem Constraints
+
+- `1 <= N <= 10^5`
+- `1 <= Q <= 10^5`
+- `1 <= A[i] <= 10^9`
+- `0 <= L <= R < N`
+
+---
+
+## Input Format
+
+- The first argument is an integer array `A`.
+- The second argument is a 2D integer array `B`, where each row is of the form `[L, R]`.
+
+---
+
+## Output Format
+
+Return an integer array where the `i`th element is the count of even numbers in the range specified by the `i`th query.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [1, 2, 3, 4, 5]
+
+B = [
+      [0, 2],
+      [2, 4],
+      [1, 4]
+    ]
+```
+
+### Input 2
+
+```text
+A = [2, 1, 8, 3, 9, 6]
+
+B = [
+      [0, 3],
+      [3, 5],
+      [1, 3],
+      [2, 4]
+    ]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+[1, 1, 2]
+```
+
+### Output 2
+
+```text
+[2, 1, 1, 1]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+- Query `[0, 2]`:
+  ```text
+  Subarray = [1, 2, 3]
+  Even numbers = {2}
+  Count = 1
+  ```
+
+- Query `[2, 4]`:
+  ```text
+  Subarray = [3, 4, 5]
+  Even numbers = {4}
+  Count = 1
+  ```
+
+- Query `[1, 4]`:
+  ```text
+  Subarray = [2, 3, 4, 5]
+  Even numbers = {2, 4}
+  Count = 2
+  ```
+
+### Explanation 2
+
+- Query `[0, 3]`:
+  ```text
+  Subarray = [2, 1, 8, 3]
+  Even numbers = {2, 8}
+  Count = 2
+  ```
+
+- Query `[3, 5]`:
+  ```text
+  Subarray = [3, 9, 6]
+  Even numbers = {6}
+  Count = 1
+  ```
+
+- Query `[1, 3]`:
+  ```text
+  Subarray = [1, 8, 3]
+  Even numbers = {8}
+  Count = 1
+  ```
+
+- Query `[2, 4]`:
+  ```text
+  Subarray = [8, 3, 9]
+  Even numbers = {8}
+  Count = 1
+  ```
+
+  ---
+
+# Q6. Odd Numbers in a Range
+
+## Problem Description
+
+You are given an integer array `A` of length `N` and `Q` queries represented by a 2D array `B` of size `Q × 2`.
+
+Each query contains two integers `L` and `R`, representing the range `[L, R]`.
+
+For each query, find the number of **odd elements** in the subarray `A[L...R]`.
+
+---
+
+## Problem Constraints
+
+- `1 <= N <= 10^5`
+- `1 <= Q <= 10^5`
+- `1 <= A[i] <= 10^9`
+- `0 <= L <= R < N`
+
+---
+
+## Input Format
+
+- The first argument is an integer array `A`.
+- The second argument is a 2D integer array `B`, where each row is of the form `[L, R]`.
+
+---
+
+## Output Format
+
+Return an integer array where the `i`th element is the count of odd numbers in the range specified by the `i`th query.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [1, 2, 3, 4, 5]
+
+B = [
+      [0, 2],
+      [2, 4],
+      [1, 4]
+    ]
+```
+
+### Input 2
+
+```text
+A = [2, 1, 8, 3, 9, 6]
+
+B = [
+      [0, 3],
+      [3, 5],
+      [1, 3],
+      [2, 4]
+    ]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+[2, 2, 2]
+```
+
+### Output 2
+
+```text
+[2, 2, 2, 2]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+- Query `[0, 2]`:
+  ```text
+  Subarray = [1, 2, 3]
+  Odd numbers = {1, 3}
+  Count = 2
+  ```
+
+- Query `[2, 4]`:
+  ```text
+  Subarray = [3, 4, 5]
+  Odd numbers = {3, 5}
+  Count = 2
+  ```
+
+- Query `[1, 4]`:
+  ```text
+  Subarray = [2, 3, 4, 5]
+  Odd numbers = {3, 5}
+  Count = 2
+  ```
+
+### Explanation 2
+
+- Query `[0, 3]`:
+  ```text
+  Subarray = [2, 1, 8, 3]
+  Odd numbers = {1, 3}
+  Count = 2
+  ```
+
+- Query `[3, 5]`:
+  ```text
+  Subarray = [3, 9, 6]
+  Odd numbers = {3, 9}
+  Count = 2
+  ```
+
+- Query `[1, 3]`:
+  ```text
+  Subarray = [1, 8, 3]
+  Odd numbers = {1, 3}
+  Count = 2
+  ```
+
+- Query `[2, 4]`:
+  ```text
+  Subarray = [8, 3, 9]
+  Odd numbers = {3, 9}
+  Count = 2
+  ```

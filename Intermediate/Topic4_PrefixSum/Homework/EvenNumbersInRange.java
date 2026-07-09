@@ -2,21 +2,24 @@
    Approach
 
    1. Create a Prefix Sum array (pSum):
-      - pSum[i] stores the sum of elements at odd indices
+      - pSum[i] stores the count of even numbers
         from index 0 to i.
 
    2. Build the Prefix Sum array:
-      - Initialize pSum[0] = 0 since index 0 is even.
-      - If the current index is odd:
-          pSum[i] = pSum[i - 1] + A[i]
-      - Otherwise:
-          pSum[i] = pSum[i - 1]
+      - Initialize pSum[0]:
+          - If A[0] is even, set pSum[0] = 1.
+          - Otherwise, set pSum[0] = 0.
+      - For each remaining element:
+          - If A[i] is even:
+              pSum[i] = pSum[i - 1] + 1
+          - Otherwise:
+              pSum[i] = pSum[i - 1]
 
    3. For each query [L, R]:
       - If L == 0:
-          Sum = pSum[R]
+          Count = pSum[R]
       - Otherwise:
-          Sum = pSum[R] - pSum[L - 1]
+          Count = pSum[R] - pSum[L - 1]
 
    4. Store the answer for each query in the result array.
 
@@ -34,7 +37,7 @@
 
 import java.util.*;
 
-public class SumOfOddIndices {
+public class EvenNumbersInRange {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the size of the array: ");
@@ -54,40 +57,44 @@ public class SumOfOddIndices {
                 B[i][j] = sc.nextInt();
             }
         }
-        long[] res = sumOfOddIndexedElements(A, B);
+        int[] res = solve(A, B);
         System.out.println(Arrays.toString(res));
 
         sc.close();
     }
 
-    public static long[] sumOfOddIndexedElements(int[] A, int[][] B) {
+    public static int[] solve(int[] A, int[][] B) {
+        // An empty array has no even numbers to count.
         if (A.length == 0) {
-            return new long[0];
+            return new int[0];
         }
 
-        long[] pSum = new long[A.length];
-        // Initialize with the 0 since index 0 is not an odd index.
-        pSum[0] = 0; 
-
+        int[] pSum = new int[A.length];
+        // Initialize the prefix count based on whether the first element is even.
+        if (A[0] % 2 == 0)
+            pSum[0] = 1;
+        else
+            pSum[0] = 0;
         for (int i = 1; i < A.length; i++) {
-            // If the current index is odd, add its value to the prefix sum.
-            // Otherwise, carry forward the previous prefix sum unchanged.
-            if (i % 2 != 0)
-                pSum[i] = pSum[i - 1] + A[i];
+            // If the current element is even, increment the count.
+            // Otherwise, carry forward the previous count.
+            if (A[i] % 2 == 0)
+                pSum[i] = pSum[i - 1] + 1;
             else
                 pSum[i] = pSum[i - 1];
         }
 
-        long[] result = new long[B.length];
+        int[] result = new int[B.length];
         for (int i = 0; i < B.length; i++) {
             int L = B[i][0];
             int R = B[i][1];
+
             if (L == 0)
                 result[i] = pSum[R];
             else
                 result[i] = pSum[R] - pSum[L - 1];
         }
-        
+        // Return the count of even numbers for each query.
         return result;
     }
 }
