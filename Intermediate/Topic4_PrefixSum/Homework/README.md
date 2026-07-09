@@ -206,3 +206,118 @@ is:
 ```text
 [4, 7, 9]
 ```
+
+---
+
+# Q2. Sum of Odd Indices Elements in a Range
+
+## Problem Description
+
+You are given an integer array `A` of length `N`.
+
+You are also given a 2D integer array `B` with dimensions `M × 2`, where each row represents a query `[L, R]`.
+
+For each query, find the **sum of all elements present at odd indices** between `L` and `R` (inclusive).
+
+An index is considered **odd** if `index % 2 == 1`.
+
+Return the answer for every query.
+
+---
+
+## Problem Constraints
+
+- `1 <= N, M <= 10^5`
+- `1 <= A[i] <= 10^9`
+- `0 <= L <= R < N`
+
+---
+
+## Input Format
+
+- The first argument is the integer array `A`.
+- The second argument is the 2D integer array `B`.
+
+---
+
+## Output Format
+
+Return an integer array of length `M`, where the `i`th element is the answer for the `i`th query.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [1, 2, 3, 4, 5, 6]
+B = [[0, 5], [2, 5]]
+```
+
+### Input 2
+
+```text
+A = [7, 8, 9, 10]
+B = [[0, 2], [1, 3]]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+[12, 10]
+```
+
+### Output 2
+
+```text
+[8, 18]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+For query `[0, 5]`:
+
+- Odd indices in the range are `1, 3, 5`.
+- Elements are `2, 4, 6`.
+
+```text
+2 + 4 + 6 = 12
+```
+
+For query `[2, 5]`:
+
+- Odd indices in the range are `3, 5`.
+- Elements are `4, 6`.
+
+```text
+4 + 6 = 10
+```
+
+### Explanation 2
+
+For query `[0, 2]`:
+
+- Odd index in the range is `1`.
+- Element is `8`.
+
+```text
+8 = 8
+```
+
+For query `[1, 3]`:
+
+- Odd indices in the range are `1, 3`.
+- Elements are `8, 10`.
+
+```text
+8 + 10 = 18
+```
