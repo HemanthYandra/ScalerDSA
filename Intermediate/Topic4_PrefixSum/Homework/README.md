@@ -209,40 +209,39 @@ is:
 
 ---
 
-# Q2. Sum of Odd Indices Elements in a Range
+# Q3. Sum of Odd Indexed Elements in a Range
 
 ## Problem Description
 
-You are given an integer array `A` of length `N`.
+You are given:
 
-You are also given a 2D integer array `B` with dimensions `M × 2`, where each row represents a query `[L, R]`.
+- An integer array `A` of size `N`.
+- A 2D array `B` of size `Q`, where each row `B[i]` contains two integers `B[i][0]` and `B[i][1]`, representing the range `[L, R]`.
 
-For each query, find the **sum of all elements present at odd indices** between `L` and `R` (inclusive).
-
-An index is considered **odd** if `index % 2 == 1`.
-
-Return the answer for every query.
+For each query in `B`, calculate the sum of elements in `A` that are located at **odd indices** within the specified range `[L, R]` (inclusive), and return the results as an array.
 
 ---
 
 ## Problem Constraints
 
-- `1 <= N, M <= 10^5`
-- `1 <= A[i] <= 10^9`
-- `0 <= L <= R < N`
+- `1 <= N <= 10^5`
+- `-10^5 <= A[i] <= 10^5`
+- `1 <= Q <= 10^5`
+- `0 <= B[i][0], B[i][1] < N`
+- `B[i][0] <= B[i][1]`
 
 ---
 
 ## Input Format
 
-- The first argument is the integer array `A`.
-- The second argument is the 2D integer array `B`.
+- The first argument `A` is an integer array.
+- The second argument `B` is a 2D integer array where each subarray `B[i] = [L, R]` represents a query range.
 
 ---
 
 ## Output Format
 
-Return an integer array of length `M`, where the `i`th element is the answer for the `i`th query.
+Return an integer array where the `i`th element is the sum of elements at **odd indices** in the range `[L, R]` for the `i`th query.
 
 ---
 
@@ -251,15 +250,22 @@ Return an integer array of length `M`, where the `i`th element is the answer for
 ### Input 1
 
 ```text
-A = [1, 2, 3, 4, 5, 6]
-B = [[0, 5], [2, 5]]
+A = [2, 8, 3, 9, 15]
+B = [
+      [1, 4],
+      [0, 2],
+      [2, 3]
+    ]
 ```
 
 ### Input 2
 
 ```text
-A = [7, 8, 9, 10]
-B = [[0, 2], [1, 3]]
+A = [5, 15, 25, 35, 45]
+B = [
+      [2, 2],
+      [2, 4]
+    ]
 ```
 
 ---
@@ -269,13 +275,13 @@ B = [[0, 2], [1, 3]]
 ### Output 1
 
 ```text
-[12, 10]
+[17, 8, 9]
 ```
 
 ### Output 2
 
 ```text
-[8, 18]
+[0, 35]
 ```
 
 ---
@@ -284,40 +290,41 @@ B = [[0, 2], [1, 3]]
 
 ### Explanation 1
 
-For query `[0, 5]`:
+- Query `[1, 4]`:
+  ```text
+  A[1] + A[3] = 8 + 9 = 17
+  ```
 
-- Odd indices in the range are `1, 3, 5`.
-- Elements are `2, 4, 6`.
+- Query `[0, 2]`:
+  ```text
+  A[1] = 8
+  ```
+
+- Query `[2, 3]`:
+  ```text
+  A[3] = 9
+  ```
+
+Therefore, the answer is:
 
 ```text
-2 + 4 + 6 = 12
-```
-
-For query `[2, 5]`:
-
-- Odd indices in the range are `3, 5`.
-- Elements are `4, 6`.
-
-```text
-4 + 6 = 10
+[17, 8, 9]
 ```
 
 ### Explanation 2
 
-For query `[0, 2]`:
+- Query `[2, 2]`:
+  ```text
+  There are no odd indices in the range, so the sum is 0.
+  ```
 
-- Odd index in the range is `1`.
-- Element is `8`.
+- Query `[2, 4]`:
+  ```text
+  A[3] = 35
+  ```
 
-```text
-8 = 8
-```
-
-For query `[1, 3]`:
-
-- Odd indices in the range are `1, 3`.
-- Elements are `8, 10`.
+Therefore, the answer is:
 
 ```text
-8 + 10 = 18
+[0, 35]
 ```

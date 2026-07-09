@@ -1,13 +1,16 @@
 /*
    Approach
 
-   1. Create a copy array:
-      - Store the original value at even indices.
-      - Store 0 at odd indices.
-
-   2. Build a Prefix Sum array (pSum):
-      - pSum[i] stores the sum of elements (only from even indices)
+   1. Create a Prefix Sum array (pSum):
+      - pSum[i] stores the sum of elements at even indices
         from index 0 to i.
+
+   2. Build the Prefix Sum array:
+      - Initialize pSum[0] = A[0] since index 0 is even.
+      - If the current index is even:
+          pSum[i] = pSum[i - 1] + A[i]
+      - Otherwise:
+          pSum[i] = pSum[i - 1]
 
    3. For each query [L, R]:
       - If L == 0:
@@ -22,11 +25,11 @@
    Complexity Analysis
 
    Time  : O(N + Q)
-           - O(N) to create the copy array and build the Prefix Sum.
+           - O(N) to build the Prefix Sum array.
            - O(Q) to answer all queries.
 
    Space : O(N)
-           - Copy array + Prefix Sum array.
+           - Prefix Sum array.
 */
 
 import java.util.*;
@@ -62,35 +65,28 @@ public class SumOfEvenIndices {
             return new long[0];
         }
 
-        int[] arr_copy = new int[A.length];
+        long[] pSum = new long[A.length];
+        pSum[0] = A[0]; // Initialize with the 1st element since index 0 is an even index.
 
-        for(int i = 0; i < A.length; i++) {
-            if(i % 2 == 0) {
-                arr_copy[i] = A[i];
-            }
-            else {
-                arr_copy[i] = 0;
-            }
-        }
-
-        long[] pSum = new long[arr_copy.length];
-        pSum[0] = arr_copy[0];
-
-        for (int i = 1; i < arr_copy.length; i++) {
-            pSum[i] = pSum[i - 1] + arr_copy[i];
+        for (int i = 1; i < A.length; i++) {
+            // If the current index is even, add its value to the prefix sum.
+            // Otherwise, carry forward the previous prefix sum unchanged.
+            if (i % 2 == 0)
+                pSum[i] = pSum[i - 1] + A[i];
+            else
+                pSum[i] = pSum[i - 1];
         }
 
         long[] result = new long[B.length];
-
         for (int i = 0; i < B.length; i++) {
             int L = B[i][0];
             int R = B[i][1];
-
             if (L == 0)
                 result[i] = pSum[R];
             else
                 result[i] = pSum[R] - pSum[L - 1];
         }
+
         return result;
     }
 }
