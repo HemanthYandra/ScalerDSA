@@ -12,5 +12,9 @@ Each topic folder contains two subfolders:
 
 ## Modules
 
-- **Intermediate** — Time Complexity, Arrays, Prefix Sum, Sliding Window, Sorting, Bit Manipulation, 2D Matrices, Strings, and more.
+- **Intermediate** — Time Complexity, Arrays, Prefix Sum, Carry Forward, Sliding Window, Sorting, Bit Manipulation, 2D Matrices, Strings, and more.
 - **Advanced** — (to be added)
+
+## Notes
+
+Solutions target a Java judge environment (Scaler/InterviewBit platform), so some files favor manual array-backed structures, index-based loops, and explicit typing over newer Java syntax for judge compatibility.
