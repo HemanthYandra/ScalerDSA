@@ -222,3 +222,146 @@ Hence, the leaders are:
 Any ordering of these leaders is accepted.
 
 ---
+
+# Q3. Generate All Subarrays
+
+## Problem Description
+
+You are given an array `A` of `N` integers.
+
+Your task is to return a **2D array** consisting of **all the subarrays** of the given array.
+
+> **Note:** The order of the subarrays in the resulting 2D array does not matter.
+
+---
+
+## Problem Constraints
+
+- `1 <= N <= 100`
+- `1 <= A[i] <= 10^5`
+
+---
+
+## Input Format
+
+- The first argument is an integer array `A`.
+
+---
+
+## Output Format
+
+- Return a 2D array containing all the subarrays of the given array in **any order**.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [1, 2, 3]
+```
+
+### Input 2
+
+```text
+A = [5, 2, 1, 4]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+[
+  [1],
+  [1, 2],
+  [1, 2, 3],
+  [2],
+  [2, 3],
+  [3]
+]
+```
+
+### Output 2
+
+```text
+[
+  [1],
+  [1, 4],
+  [2],
+  [2, 1],
+  [2, 1, 4],
+  [4],
+  [5],
+  [5, 2],
+  [5, 2, 1],
+  [5, 2, 1, 4]
+]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+For the array:
+
+```text
+A = [1, 2, 3]
+```
+
+All possible subarrays are:
+
+```text
+[1]
+[1, 2]
+[1, 2, 3]
+[2]
+[2, 3]
+[3]
+```
+
+There are a total of:
+
+```text
+6
+```
+
+subarrays.
+
+---
+
+### Explanation 2
+
+For the array:
+
+```text
+A = [5, 2, 1, 4]
+```
+
+All possible subarrays are:
+
+```text
+[5]
+[5, 2]
+[5, 2, 1]
+[5, 2, 1, 4]
+[2]
+[2, 1]
+[2, 1, 4]
+[1]
+[1, 4]
+[4]
+```
+
+There are a total of:
+
+```text
+10
+```
+
+subarrays.
