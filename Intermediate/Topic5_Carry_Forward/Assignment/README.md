@@ -365,3 +365,117 @@ There are a total of:
 ```
 
 subarrays.
+
+---
+
+# Q4. Subarray in Given Range
+
+## Problem Description
+
+Given an array `A` of length `N`, return the subarray from index `B` to index `C` (inclusive).
+
+---
+
+## Problem Constraints
+
+- `1 <= N <= 10^5`
+- `1 <= A[i] <= 10^9`
+- `0 <= B <= C < N`
+
+---
+
+## Input Format
+
+- The first argument is an integer array `A`.
+- The second argument is an integer `B`.
+- The third argument is an integer `C`.
+
+---
+
+## Output Format
+
+- Return the subarray from index `B` to index `C` (inclusive).
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [4, 3, 2, 6]
+B = 1
+C = 3
+```
+
+### Input 2
+
+```text
+A = [4, 2, 2]
+B = 0
+C = 1
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+[3, 2, 6]
+```
+
+### Output 2
+
+```text
+[4, 2]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+For the array:
+
+```text
+A = [4, 3, 2, 6]
+```
+
+The elements from index `1` to index `3` are:
+
+```text
+[3, 2, 6]
+```
+
+Hence, the answer is:
+
+```text
+[3, 2, 6]
+```
+
+---
+
+### Explanation 2
+
+For the array:
+
+```text
+A = [4, 2, 2]
+```
+
+The elements from index `0` to index `1` are:
+
+```text
+[4, 2]
+```
+
+Hence, the answer is:
+
+```text
+[4, 2]
+```
+
+---
