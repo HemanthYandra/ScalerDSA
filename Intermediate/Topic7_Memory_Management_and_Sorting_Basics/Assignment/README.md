@@ -1,126 +1,3 @@
-# Q1. Kth Smallest Element
-
-## Problem Description
-
-Given an integer array `A` and an integer `B`, find the **Bth smallest element** in the array.
-
-> **Note:** Try to solve the problem using **at most `B` swaps**.
-
----
-
-## Problem Constraints
-
-- `1 <= |A| <= 10^5`
-- `1 <= B <= min(|A|, 500)`
-- `1 <= A[i] <= 10^9`
-
----
-
-## Input Format
-
-- The first argument is an integer array `A`.
-- The second argument is an integer `B`.
-
----
-
-## Output Format
-
-- Return the **Bth smallest element** in the given array.
-
----
-
-## Example Input
-
-### Input 1
-
-```text
-A = [2, 1, 4, 3, 2]
-B = 3
-```
-
-### Input 2
-
-```text
-A = [1, 2]
-B = 2
-```
-
----
-
-## Example Output
-
-### Output 1
-
-```text
-2
-```
-
-### Output 2
-
-```text
-2
-```
-
----
-
-## Example Explanation
-
-### Explanation 1
-
-For the array:
-
-```text
-A = [2, 1, 4, 3, 2]
-```
-
-After sorting:
-
-```text
-[1, 2, 2, 3, 4]
-```
-
-The **3rd smallest element** is:
-
-```text
-2
-```
-
-Hence, the answer is:
-
-```text
-2
-```
-
----
-
-### Explanation 2
-
-For the array:
-
-```text
-A = [1, 2]
-```
-
-After sorting:
-
-```text
-[1, 2]
-```
-
-The **2nd smallest element** is:
-
-```text
-2
-```
-
-Hence, the answer is:
-
-```text
-2
-```
-
----
-
 # Q2. Elements Removal
 
 ## Problem Description
@@ -244,6 +121,129 @@ Hence, the minimum total cost is:
 
 ```text
 5
+```
+
+---
+
+# Q2. Kth Smallest Element
+
+## Problem Description
+
+Given an integer array `A` and an integer `B`, find the **Bth smallest element** in the array.
+
+> **Note:** Try to solve the problem using **at most `B` swaps**.
+
+---
+
+## Problem Constraints
+
+- `1 <= |A| <= 10^5`
+- `1 <= B <= min(|A|, 500)`
+- `1 <= A[i] <= 10^9`
+
+---
+
+## Input Format
+
+- The first argument is an integer array `A`.
+- The second argument is an integer `B`.
+
+---
+
+## Output Format
+
+- Return the **Bth smallest element** in the given array.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [2, 1, 4, 3, 2]
+B = 3
+```
+
+### Input 2
+
+```text
+A = [1, 2]
+B = 2
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+2
+```
+
+### Output 2
+
+```text
+2
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+For the array:
+
+```text
+A = [2, 1, 4, 3, 2]
+```
+
+After sorting:
+
+```text
+[1, 2, 2, 3, 4]
+```
+
+The **3rd smallest element** is:
+
+```text
+2
+```
+
+Hence, the answer is:
+
+```text
+2
+```
+
+---
+
+### Explanation 2
+
+For the array:
+
+```text
+A = [1, 2]
+```
+
+After sorting:
+
+```text
+[1, 2]
+```
+
+The **2nd smallest element** is:
+
+```text
+2
+```
+
+Hence, the answer is:
+
+```text
+2
 ```
 
 ---
