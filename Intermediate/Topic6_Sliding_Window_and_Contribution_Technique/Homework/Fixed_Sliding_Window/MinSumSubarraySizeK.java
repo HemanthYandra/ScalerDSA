@@ -43,7 +43,7 @@ public class MinSumSubarraySizeK {
         sc.close();
     }
 
-    // Returns the maximum sum among all
+    // Returns the minimum sum among all
     // subarrays of size K.
     public static int slidingWindow(int[] A, int K) {
         // An empty array or an invalid window size
