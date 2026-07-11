@@ -1,4 +1,4 @@
-# Q2. Elements Removal
+# Q1. Elements Removal
 
 ## Problem Description
 
