@@ -41,11 +41,7 @@ import java.util.*;
 
 public class SuperStreamEngineers {
     public static void main(String[] args) {
-        // int[] A = { 30, 25, 40, 35, 20, 45, 50, 55, 22, 18, 15 };
-        // int B = 3; // Subarray Size
-        // int C = 30; // Average of subarray
-
-        Scanner sc = new Scanner(System.in);
+       Scanner sc = new Scanner(System.in);
         System.out.print("Enter the size of the array: ");
         int n = sc.nextInt();
         int[] A = new int[n];
