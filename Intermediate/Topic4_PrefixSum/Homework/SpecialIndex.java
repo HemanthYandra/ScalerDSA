@@ -38,53 +38,72 @@ import java.util.*;
 public class SpecialIndex {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
+        System.out.print("Enter the size of the array: ");
+        int n = sc.nextInt();
+        System.out.println("Enter the elements of the array: ");
+        int[] A = new int[n];
+        for (int i = 0; i < n; i++) {
+            A[i] = sc.nextInt();
+        }
+        int result = countSpecialIndices(A);
+        System.out.println(result);
+
         sc.close();
     }
 
-    public static int solve(int[] A) {
-        // An empty array has no special indices.
-        if (A.length == 0) {
-            return 0;
-        }
+    public static int countSpecialIndices(int[] A) {
+        int[] prefixSumEven = buildEvenPrefixSum(A);
+        int[] prefixSumOdd = buildOddPrefixSum(A);
 
-        // Build prefix sums for even and odd indices separately.
-        int[] prefixSumEven = evenPrefixArray(A);
-        int[] prefixSumOdd = oddPrefixArray(A);
         int count = 0;
         int N = A.length;
 
-        // Assume A[i] is removed and calculate the new even and odd sums.
         for (int i = 0; i < N; i++) {
-            int evenSum = 0;
-            int oddSum = 0;
-
+            int evenSum;
+            int oddSum;
+            /*
+               prefixSumEven[i] = sum of all even index elements from 0 to i
+               prefixSumOdd[i] = sum of all odd index elements from 0 to i
+             */
             if (i == 0) {
-                // Removing the first element shifts all remaining elements left,
-                // so even and odd positions are swapped.
+                /*
+                   If we remove index 0:
+                   There are no elements before index 0.
+                   evenSum = Sum of odd elements from 1 to N-1
+                   oddSum = Sum of even elements from 1 to N-1
+                 */
                 evenSum = prefixSumOdd[N - 1] - prefixSumOdd[i];
                 oddSum = prefixSumEven[N - 1] - prefixSumEven[i];
             } else {
-                // Elements before i keep their parity.
-                // Elements after i shift left, so even and odd positions swap.
-                evenSum = prefixSumEven[i - 1] + (prefixSumOdd[N - 1] - prefixSumOdd[i]);
-                oddSum = prefixSumOdd[i - 1] + (prefixSumEven[N - 1] - prefixSumEven[i]);
+                /*
+                   evenSum = prefixSumEven[i - 1] → even elements before i (0 to i - 1)
+                   + (prefixSumOdd[N - 1] - prefixSumOdd[i]) → odd elements after i (i + 1 to 
+                   N - 1)
+                  
+                   oddSum = prefixSumOdd[i - 1] → odd elements before i (0 to i - 1)
+                   + (prefixSumEven[N - 1] - prefixSumEven[i]) → even elements after i (i + 1 to
+                   N - 1)
+                 */
+                evenSum = prefixSumEven[i - 1]
+                        + (prefixSumOdd[N - 1] - prefixSumOdd[i]);
+                oddSum = prefixSumOdd[i - 1]
+                        + (prefixSumEven[N - 1] - prefixSumEven[i]);
             }
 
-            // If the sums of even and odd indexed elements are equal
-            // after removing A[i], then i is a special index.
-            if (evenSum == oddSum) {
+            // If both sums are equal, index i is a special index
+            if (evenSum == oddSum)
                 count++;
-            }
         }
+
         // Return the total number of special indices.
         return count;
     }
 
     // Builds and returns the prefix sum array for elements at even indices.
-    public static int[] evenPrefixArray(int[] A) {
+    public static int[] buildEvenPrefixSum(int[] A) {
         int[] evenPrefix = new int[A.length];
-        // Initialize with the first element since index 0 is an even index.
+
+        // Index 0 is even, so include arr[0]
         evenPrefix[0] = A[0];
 
         for (int i = 1; i < A.length; i++) {
@@ -96,14 +115,16 @@ public class SpecialIndex {
                 evenPrefix[i] = evenPrefix[i - 1];
             }
         }
+
         // Return the prefix sum array for even indices.
         return evenPrefix;
     }
 
     // Builds and returns the prefix sum array for elements at odd indices.
-    public static int[] oddPrefixArray(int[] A) {
+    public static int[] buildOddPrefixSum(int[] A) {
         int[] oddPrefix = new int[A.length];
-        // Initialize with 0 since index 0 is not an odd index.
+
+        // Index 0 is even, so odd sum starts at 0
         oddPrefix[0] = 0;
 
         for (int i = 1; i < A.length; i++) {
@@ -115,6 +136,7 @@ public class SpecialIndex {
                 oddPrefix[i] = oddPrefix[i - 1];
             }
         }
+
         // Return the prefix sum array for odd indices.
         return oddPrefix;
     }
