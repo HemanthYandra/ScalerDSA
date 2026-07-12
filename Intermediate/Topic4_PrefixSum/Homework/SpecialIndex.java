@@ -107,6 +107,7 @@ public class SpecialIndex {
         evenPrefix[0] = A[0];
 
         for (int i = 1; i < A.length; i++) {
+
             // If the current index is even, add its value to the prefix sum.
             // Otherwise, carry forward the previous prefix sum.
             if (i % 2 == 0) {
@@ -128,6 +129,7 @@ public class SpecialIndex {
         oddPrefix[0] = 0;
 
         for (int i = 1; i < A.length; i++) {
+            
             // If the current index is odd, add its value to the prefix sum.
             // Otherwise, carry forward the previous prefix sum.
             if (i % 2 != 0) {
