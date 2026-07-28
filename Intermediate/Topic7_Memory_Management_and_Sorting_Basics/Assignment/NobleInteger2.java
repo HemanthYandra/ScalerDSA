@@ -51,6 +51,12 @@ public class NobleInteger2 {
     }
 
     public static int solve(int[] A) {
+        // An empty array has no noble integer.
+        if (A.length == 0) {
+            return -1;
+        }
+
+        // Sort the array in reverse order - Start
         for (int i = 0; i < A.length; i++) {
             A[i] = A[i] * -1;
         }
@@ -60,23 +66,36 @@ public class NobleInteger2 {
         for (int i = 0; i < A.length; i++) {
             A[i] = A[i] * -1;
         }
+        // Sort the array in reverse order - End
 
+        // Stores the no. of elements
+        // greater than the current element.
         int count = 0;
+
+        // Stores the no. of noble integers found.
         int noble_count = 0;
 
+        // Check the first element.
         if (A[0] == 0) {
             noble_count++;
         }
 
+        // Traverse the array.
         for (int i = 1; i < A.length; i++) {
+            // Update the no. of greater elements
+            // when a new value is found.
             if (A[i] != A[i - 1]) {
                 count = i;
             }
 
+            // Check whether the current
+            // element is a noble integer.
             if (A[i] == count) {
                 noble_count++;
             }
         }
+
+        // Return 1 if a noble integer exists.
         return noble_count > 0 ? 1 : -1;
     }
 }

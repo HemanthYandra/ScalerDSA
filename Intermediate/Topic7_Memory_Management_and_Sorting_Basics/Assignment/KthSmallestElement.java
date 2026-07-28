@@ -42,13 +42,13 @@ public class KthSmallestElement {
         }
         System.out.print("Enter the value of B: ");
         int B = sc.nextInt();
-        int result = kthsmallest(A, B);
+        int result = kthSmallest(A, B);
         System.out.println(result);
 
         sc.close();
     }
 
-    public static int kthsmallest(final int[] A, int B) {
+    public static int kthSmallest(final int[] A, int B) {
         // An empty array or an invalid value of B
         // cannot have a B-th smallest element.
         if (A.length == 0 || B <= 0 || B > A.length) {

@@ -48,7 +48,6 @@ public class ArithmeticProgression {
     }
 
     public static int solve(int[] A) {
-
         // An array with one or two elements
         // always forms an arithmetic progression.
         if (A.length <= 2) {

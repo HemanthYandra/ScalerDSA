@@ -46,7 +46,6 @@ public class NobleInteger {
     }
 
     public static int findCount(int[] A) {
-        
         // An empty array contains no noble integers.
         if (A.length == 0) {
             return 0;
