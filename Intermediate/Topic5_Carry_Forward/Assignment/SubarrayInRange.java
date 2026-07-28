@@ -20,6 +20,8 @@
            - Stores the extracted subarray.
 */
 
+package Intermediate.Topic5_Carry_Forward.Assignment;
+
 import java.util.*;
 
 public class SubarrayInRange {

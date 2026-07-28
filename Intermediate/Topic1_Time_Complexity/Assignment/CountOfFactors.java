@@ -1,3 +1,5 @@
+package Intermediate.Topic1_Time_Complexity.Assignment;
+
 import java.util.*;
 
 public class CountOfFactors {

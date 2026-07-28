@@ -33,6 +33,8 @@
            - Uses only a few extra variables.
 */
 
+package Intermediate.Topic5_Carry_Forward.Homework;
+
 import java.util.*;
 
 public class ClosestMinMax {

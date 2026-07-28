@@ -32,6 +32,8 @@
            - Prefix Sum array.
 */
 
+package Intermediate.Topic4_PrefixSum.Homework;
+
 import java.util.*;
 
 public class SumOfOddIndices {

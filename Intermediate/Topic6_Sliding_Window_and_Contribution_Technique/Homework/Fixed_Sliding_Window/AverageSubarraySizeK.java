@@ -24,6 +24,8 @@
            - Stores the average of each window.
 */
 
+package Intermediate.Topic6_Sliding_Window_and_Contribution_Technique.Homework.Fixed_Sliding_Window;
+
 import java.util.*;
 
 public class AverageSubarraySizeK {

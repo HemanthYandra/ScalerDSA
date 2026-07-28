@@ -25,6 +25,8 @@
            - Uses only a few extra variables.
 */
 
+package Intermediate.Topic4_PrefixSum.Homework;
+
 import java.util.*;
 
 public class EquilibriumIndex {

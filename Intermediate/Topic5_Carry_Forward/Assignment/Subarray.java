@@ -27,6 +27,8 @@
              stored across all subarrays is O(N³).
 */
 
+package Intermediate.Topic5_Carry_Forward.Assignment;
+
 import java.util.*;
 
 public class Subarray {

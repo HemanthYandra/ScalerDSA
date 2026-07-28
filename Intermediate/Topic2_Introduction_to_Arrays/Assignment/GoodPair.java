@@ -16,6 +16,8 @@
    Space : O(1) (excluding sorting implementation)
  */
 
+package Intermediate.Topic2_Introduction_to_Arrays.Assignment;
+
 import java.util.*;
 
 public class GoodPair {

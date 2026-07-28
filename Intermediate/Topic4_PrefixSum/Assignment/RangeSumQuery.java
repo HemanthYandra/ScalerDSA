@@ -28,6 +28,8 @@
            - Prefix Sum array.
 */
 
+package Intermediate.Topic4_PrefixSum.Assignment;
+
 import java.util.*;
 
 public class RangeSumQuery {
