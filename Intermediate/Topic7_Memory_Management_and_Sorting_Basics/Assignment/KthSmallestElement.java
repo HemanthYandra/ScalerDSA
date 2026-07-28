@@ -1,5 +1,3 @@
-package Intermediate.Topic7_Memory_Management_and_Sorting_Basics.Assignment;
-
 /*
    Approach
 
@@ -27,6 +25,8 @@ package Intermediate.Topic7_Memory_Management_and_Sorting_Basics.Assignment;
    Space : O(N)
            - Uses a copy of the input array.
 */
+
+package Intermediate.Topic7_Memory_Management_and_Sorting_Basics.Assignment;
 
 import java.util.*;
 

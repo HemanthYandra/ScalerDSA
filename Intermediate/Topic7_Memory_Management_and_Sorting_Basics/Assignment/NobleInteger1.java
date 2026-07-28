@@ -1,5 +1,3 @@
-package Intermediate.Topic7_Memory_Management_and_Sorting_Basics.Assignment;
-
 /*
    Approach
 
@@ -29,6 +27,8 @@ package Intermediate.Topic7_Memory_Management_and_Sorting_Basics.Assignment;
    Space : O(1)
            - Uses only a few extra variables.
 */
+
+package Intermediate.Topic7_Memory_Management_and_Sorting_Basics.Assignment;
 
 import java.util.*;
 
