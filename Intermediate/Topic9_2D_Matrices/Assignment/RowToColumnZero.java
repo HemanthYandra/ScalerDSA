@@ -38,14 +38,14 @@ import java.util.*;
 public class RowToColumnZero {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // Read the number of rows and columns.
+        // Read the number of rows and columns
         System.out.print("Enter Row Size: ");
         int rows = sc.nextInt();
 
         System.out.print("Enter Col Size: ");
         int cols = sc.nextInt();
 
-        // Input matrix.
+        // Input matrix
         int[][] A = new int[rows][cols];
 
         System.out.println("Enter the Matrix Elements: ");
@@ -55,10 +55,10 @@ public class RowToColumnZero {
             }
         }
 
-        // Modify the matrix.
+        // Modify the matrix
         int[][] result = solve(A);
 
-        // Print the modified matrix.
+        // Print the modified matrix
         System.out.println("Modified Matrix:");
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[0].length; j++) {
@@ -66,22 +66,23 @@ public class RowToColumnZero {
             }
             System.out.println();
         }
+
         sc.close();
     }
 
     public static int[][] solve(int[][] A) {
-        // No. of rows and columns.
+        // No. of rows and columns
         int rows = A.length;
         int cols = A[0].length;
 
         // These flags indicate whether the first row
         // or first column originally contains a zero.
         // They are handled separately because they
-        // are used as marker arrays later.
+        // are used as marker arrays later
         boolean firstRowZero = false;
         boolean firstColZero = false;
 
-        // Check if the first row contains any zero.
+        // Check if the first row contains any zero
         for (int j = 0; j < cols; j++) {
             if (A[0][j] == 0) {
                 firstRowZero = true;
@@ -89,7 +90,7 @@ public class RowToColumnZero {
             }
         }
 
-        // Check if the first column contains any zero.
+        // Check if the first column contains any zero
         for (int i = 0; i < rows; i++) {
             if (A[i][0] == 0) {
                 firstColZero = true;

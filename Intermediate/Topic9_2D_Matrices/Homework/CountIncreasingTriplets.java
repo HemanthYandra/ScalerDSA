@@ -35,11 +35,11 @@ import java.util.*;
 public class CountIncreasingTriplets {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // Read the size of the array.
+        // Read the size of the array
         System.out.print("Enter Array Size: ");
         int n = sc.nextInt();
 
-        // Input array.
+        // Input array
         int[] A = new int[n];
 
         System.out.println("Enter Array Elements: ");
@@ -47,19 +47,20 @@ public class CountIncreasingTriplets {
             A[i] = sc.nextInt();
         }
 
-        // Count increasing triplets.
+        // Count increasing triplets
         int result = solve(A);
 
-        // Print the result.
+        // Print the result
         System.out.println("Count of Increasing Triplets: " + result);
+        
         sc.close();
     }
 
     public static int solve(int[] A) {
-        // Size of the array.
+        // Size of the array
         int n = A.length;
 
-        // Stores the total no. of valid triplets.
+        // Stores the total no. of valid triplets
         int count = 0;
 
         // Consider each element as the middle
@@ -67,7 +68,7 @@ public class CountIncreasingTriplets {
         for (int j = 1; j < n - 1; j++) {
 
             // Count elements smaller than A[j]
-            // on the left side.
+            // on the left side
             int leftCount = 0;
 
             for (int i = 0; i < j; i++) {
@@ -91,7 +92,7 @@ public class CountIncreasingTriplets {
             count += leftCount * rightCount;
         }
 
-        // Return the total count.
+        // Return the total count
         return count;
     }
 }

@@ -27,14 +27,14 @@ import java.util.*;
 public class RowSum {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // Read the number of rows and columns.
+        // Read the number of rows and columns
         System.out.print("Enter Row Size: ");
         int rows = sc.nextInt();
 
         System.out.print("Enter Col Size: ");
         int cols = sc.nextInt();
 
-        // Input matrix.
+        // Input matrix
         int[][] A = new int[rows][cols];
 
         System.out.println("Enter the Matrix Elements: ");
@@ -44,34 +44,35 @@ public class RowSum {
             }
         }
 
-        // Find the sum of each row.
+        // Find the sum of each row
         int[] result = solve(A);
 
-        // Print the result.
+        // Print the result
         System.out.println("Row Sums:");
         for (int sum : result) {
             System.out.print(sum + " ");
         }
+
         sc.close();
     }
 
     public static int[] solve(int[][] A) {
-        // Result array to store row sums.
+        // Result array to store row sums
         int[] result = new int[A.length];
 
-        // Traverse each row.
+        // Traverse each row
         for (int i = 0; i < A.length; i++) {
-            // Store the sum of the current row.
+            // Store the sum of the current row
             int sum = 0;
-            // Traverse all columns in the current row.
+            // Traverse all columns in the current row
             for (int j = 0; j < A[i].length; j++) {
                 sum += A[i][j];
             }
-            // Store the row sum.
+            // Store the row sum
             result[i] = sum;
         }
 
-        // Return the result array.
+        // Return the result array
         return result;
     }
 }

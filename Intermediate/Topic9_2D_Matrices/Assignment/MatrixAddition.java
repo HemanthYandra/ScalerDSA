@@ -24,14 +24,14 @@ import java.util.*;
 public class MatrixAddition {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // Read the no. of rows and columns.
+        // Read the no. of rows and columns
         System.out.print("Enter Row Size: ");
         int rows = sc.nextInt();
 
         System.out.print("Enter Col Size: ");
         int cols = sc.nextInt();
 
-        // Input matrix A.
+        // Input matrix A
         int[][] A = new int[rows][cols];
 
         System.out.println("Enter the 1st 2D Array Elements: ");
@@ -41,7 +41,7 @@ public class MatrixAddition {
             }
         }
 
-        // Input matrix B.
+        // Input matrix B
         int[][] B = new int[rows][cols];
 
         System.out.println("Enter the 2nd 2D Array Elements: ");
@@ -51,39 +51,40 @@ public class MatrixAddition {
             }
         }
 
-        // Find the sum of the matrices.
+        // Find the sum of the matrices
         int[][] result = solve(A, B);
 
-        // Print the resulting matrix.
+        // Print the resulting matrix
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[0].length; j++) {
                 System.out.print(result[i][j] + " ");
             }
             System.out.println();
         }
+
         sc.close();
     }
 
     public static int[][] solve(int[][] A, int[][] B) {
-        // No. of rows in the matrices.
+        // No. of rows in the matrices
         int rows = A.length;
 
-        // No. of columns in the matrices.
+        // No. of columns in the matrices
         int cols = A[0].length;
 
-        // Result matrix.
+        // Result matrix
         int[][] result = new int[rows][cols];
 
-        // Traverse both matrices.
+        // Traverse both matrices
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
 
-                // Add corresponding elements.
+                // Add corresponding elements
                 result[i][j] = A[i][j] + B[i][j];
             }
         }
 
-        // Return the resulting matrix.
+        // Return the resulting matrix
         return result;
     }
 }

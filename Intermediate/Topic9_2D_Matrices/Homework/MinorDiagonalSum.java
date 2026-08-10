@@ -29,11 +29,11 @@ import java.util.*;
 public class MinorDiagonalSum {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // Read the size of the square matrix.
+        // Read the size of the square matrix
         System.out.print("Enter Matrix Size: ");
         int n = sc.nextInt();
 
-        // Input matrix.
+        // Input matrix
         int[][] A = new int[n][n];
 
         System.out.println("Enter the Matrix Elements: ");
@@ -43,29 +43,30 @@ public class MinorDiagonalSum {
             }
         }
 
-        // Find the minor diagonal sum.
+        // Find the minor diagonal sum
         int result = solve(A);
 
-        // Print the result.
+        // Print the result
         System.out.println("Minor Diagonal Sum: " + result);
+
         sc.close();
     }
 
-    public static int solve(int[][] A) {
-        // Size of the square matrix.
+    public static int solve(int[][] A) {   
+        // Size of the square matrix
         int n = A.length;
 
-        // Variable to store the diagonal sum.
+        // Variable to store the diagonal sum
         int sum = 0;
 
-        // Traverse the rows of the matrix.
+        // Traverse the rows of the matrix
         for (int i = 0; i < n; i++) {
-            // Add the minor diagonal element.
+            // Add the minor diagonal element
             // Column index decreases as row index increases.
             sum += A[i][n - 1 - i];
         }
 
-        // Return the final sum.
+        // Return the final sum
         return sum;
     }
 }

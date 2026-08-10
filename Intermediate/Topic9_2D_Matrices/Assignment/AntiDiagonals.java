@@ -35,11 +35,11 @@ public class AntiDiagonals {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Read the size of the square matrix.
+        // Read the size of the square matrix
         System.out.print("Enter Matrix Size: ");
         int n = sc.nextInt();
 
-        // Input matrix.
+        // Input matrix
         int[][] A = new int[n][n];
 
         System.out.println("Enter the Matrix Elements: ");
@@ -49,10 +49,10 @@ public class AntiDiagonals {
             }
         }
 
-        // Find the anti-diagonals.
+        // Find the anti-diagonals
         int[][] result = diagonal(A);
 
-        // Print the result matrix.
+        // Print the result matrix
         System.out.println("Anti-Diagonals:");
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[0].length; j++) {
@@ -65,29 +65,28 @@ public class AntiDiagonals {
     }
 
     public static int[][] diagonal(int[][] A) {
-
-        // Size of the square matrix.
+        // Size of the square matrix
         int n = A.length;
 
-        // Total number of anti-diagonals.
+        // Total number of anti-diagonals
         int totalDiagonals = 2 * n - 1;
 
-        // Result matrix.
+        // Result matrix
         int[][] result = new int[totalDiagonals][n];
 
-        // Traverse every anti-diagonal.
+        // Traverse every anti-diagonal
         for (int d = 0; d < totalDiagonals; d++) {
 
-            // Starting row of the current anti-diagonal.
+            // Starting row of the current anti-diagonal
             int row = (d < n) ? 0 : d - (n - 1);
 
-            // Starting column of the current anti-diagonal.
+            // Starting column of the current anti-diagonal
             int col = (d < n) ? d : n - 1;
 
-            // Column index in the result matrix.
+            // Column index in the result matrix
             int idx = 0;
 
-            // Traverse diagonally down-left.
+            // Traverse diagonally down-left
             while (row < n && col >= 0) {
                 result[d][idx] = A[row][col];
                 row++;
@@ -96,7 +95,7 @@ public class AntiDiagonals {
             }
         }
 
-        // Return the result matrix.
+        // Return the result matrix
         return result;
     }
 }
