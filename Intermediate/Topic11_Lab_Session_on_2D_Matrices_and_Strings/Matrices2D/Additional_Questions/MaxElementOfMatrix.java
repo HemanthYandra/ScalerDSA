@@ -26,7 +26,7 @@
 
 package Intermediate.Topic11_Lab_Session_on_2D_Matrices_and_Strings.Matrices2D.Additional_Questions;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class MaxElementOfMatrix {
     public static void main(String[] args) {

@@ -48,13 +48,13 @@ public class ReverseEachRow {
             }
         }
 
-        reverseEachRow(mat);
+        int[][] res = reverseEachRow(mat);
 
         // Print the modified matrix
         System.out.println("Matrix after reversing each row: ");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                System.out.print(mat[i][j] + " ");
+                System.out.print(res[i][j] + " ");
             }
             System.out.println();
         }

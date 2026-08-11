@@ -52,7 +52,7 @@ public class PrintRowInWaveForm {
         sc.close();
     }
 
-    public static void printWaveArray(int mat[][]) {
+    public static void printWaveArray(int[][] mat) {
         int n = mat.length;
         int m = mat[0].length;
 

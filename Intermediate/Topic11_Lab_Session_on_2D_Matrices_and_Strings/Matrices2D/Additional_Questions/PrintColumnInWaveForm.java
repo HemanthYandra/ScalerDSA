@@ -26,7 +26,7 @@
 
 package Intermediate.Topic11_Lab_Session_on_2D_Matrices_and_Strings.Matrices2D.Additional_Questions;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class PrintColumnInWaveForm {
     public static void main(String[] args) {
@@ -53,7 +53,7 @@ public class PrintColumnInWaveForm {
         sc.close();
     }
 
-    public static void printWaveArray(int mat[][]) {
+    public static void printWaveArray(int[][] mat) {
         int n = mat.length;
         int m = mat[0].length;
 
