@@ -1,4 +1,4 @@
-# Q1. Is alphanumeric or not
+# Q1. Is Alphanumeric or not
 
 ## Problem Description
 
