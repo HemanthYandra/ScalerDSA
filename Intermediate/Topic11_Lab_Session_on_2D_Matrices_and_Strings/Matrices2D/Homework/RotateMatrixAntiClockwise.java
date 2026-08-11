@@ -56,7 +56,6 @@ public class RotateMatrixAntiClockwise {
     }
 
     public static void rotateAntiClockwise(int[][] A) {
-
         // Transpose the matrix
         transpose(A);
 
@@ -70,7 +69,6 @@ public class RotateMatrixAntiClockwise {
         // Traverse the upper triangular part of the matrix
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-
                 // Swap A[i][j] with A[j][i]
                 int temp = A[i][j];
                 A[i][j] = A[j][i];

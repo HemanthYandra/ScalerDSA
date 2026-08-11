@@ -76,7 +76,6 @@ public class TransposeOfSquareMatrix {
         // of the square matrix.
         for(int i = 0; i < n; i++) {
             for (int j = i + 1; j < m; j++) {
-
                 // Swap mat[i][j] with mat[j][i]
                 int temp = mat[i][j];
                 mat[i][j] = mat[j][i];

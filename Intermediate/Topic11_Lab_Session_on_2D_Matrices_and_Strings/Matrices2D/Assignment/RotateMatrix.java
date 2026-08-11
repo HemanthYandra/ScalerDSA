@@ -52,13 +52,11 @@ public class RotateMatrix {
         rotate(mat);
 
         System.out.println("Matrix after 90 degree clockwise rotation: ");
-
-        // Print the rotated matrix.
+        // Print the rotated matrix
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print(mat[i][j] + " ");
             }
-
             System.out.println();
         }
 
@@ -66,7 +64,6 @@ public class RotateMatrix {
     }
 
     public static void rotate(int[][] A) {
-
         // Transpose the matrix.
         transpose(A);
 
@@ -80,7 +77,6 @@ public class RotateMatrix {
         // Traverse the upper triangular part of the matrix.
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-
                 // Swap A[i][j] with A[j][i].
                 int temp = A[i][j];
                 A[i][j] = A[j][i];
@@ -96,7 +92,6 @@ public class RotateMatrix {
         for (int i = 0; i < n; i++) {
             int l = 0;
             int r = n - 1;
-
             // Swap elements from both ends of the row
             while (l < r) {
                 int temp = A[i][l];
