@@ -89,6 +89,7 @@ public class LengthOfTheLongestPalindromeSubstring {
             if (ch[l] != ch[r]) {
                 break;
             }
+            
             l--;
             r++;
         }

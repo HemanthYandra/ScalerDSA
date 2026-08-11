@@ -56,7 +56,6 @@ public class StringOperations {
 
         // Traverse through each character
         for(int i = 0; i < ch.length; i++) {
-
             // Replace lowercase vowels with '#'
             if (ch[i] == 'a' || ch[i] == 'e' || ch[i] == 'i' 
                     || ch[i] == 'o' || ch[i] == 'u') {
