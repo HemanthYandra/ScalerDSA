@@ -104,7 +104,7 @@ public class LongestPalindromeSubstring {
             // Update the longest palindrome
             if (len > maxLen) {
                 maxLen = len;
-                start = l + 1; // Only update start when a new max is found
+                start = l + 1;      // Only update start when a new max is found
             }
 
             // Even Length Palindrome
@@ -127,7 +127,7 @@ public class LongestPalindromeSubstring {
             // Update the longest palindrome
             if (len > maxLen) {
                 maxLen = len;
-                start = l + 1; // Only update start when a new max is found
+                start = l + 1;      // Only update start when a new max is found
             }
         }
 
