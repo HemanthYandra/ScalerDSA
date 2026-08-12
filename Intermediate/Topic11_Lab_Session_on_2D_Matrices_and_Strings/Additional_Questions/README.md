@@ -139,3 +139,178 @@ Therefore, the maximum number of consecutive `1`s is:
 
 ---
 
+# Q2. Maximum Consecutive 1's by Swapping One 0 with One 1
+
+## Problem Description
+
+Given an array `A` consisting only of `0`s and `1`s, find the **maximum number of consecutive `1`s** that can be obtained by **swapping at most one `0` with one `1`**.
+
+### Important
+
+The operation is a **swap**, not a replacement.
+
+You can swap:
+
+```text
+0 ↔ 1
+```
+
+at most once.
+
+Therefore, the total number of `1`s in the array does not change.
+
+For example, given:
+
+```text
+A = [1, 0, 1, 1, 0, 1]
+```
+
+We can swap the `0` at index `1` with the `1` at index `5`:
+
+```text
+[1, 0, 1, 1, 0, 1]
+          ↓
+[1, 1, 1, 1, 0, 0]
+```
+
+This gives `4` consecutive `1`s.
+
+---
+
+## Problem Constraints
+
+- `1 <= N <= 100000`
+- `A[i]` is either `0` or `1`
+
+---
+
+## Input Format
+
+The first line contains an integer `N`, representing the size of the array.
+
+The second line contains `N` integers representing the array `A`.
+
+---
+
+## Output Format
+
+Return the maximum number of consecutive `1`s that can be obtained by swapping at most one `0` with one `1`.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+N = 6
+
+1 0 1 1 0 1
+```
+
+### Input 2
+
+```text
+N = 7
+
+1 1 0 1 1 1 0
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+4
+```
+
+### Output 2
+
+```text
+5
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+Given:
+
+```text
+A = [1, 0, 1, 1, 0, 1]
+```
+
+There are four `1`s in total.
+
+We can swap the `0` at index `1` with the `1` at index `5`:
+
+```text
+Original:
+[1, 0, 1, 1, 0, 1]
+```
+
+After swapping:
+
+```text
+[1, 1, 1, 1, 0, 0]
+```
+
+Now we have:
+
+```text
+4 consecutive 1's
+```
+
+We cannot obtain `5` consecutive `1`s because the array contains only four `1`s in total.
+
+Therefore, the answer is:
+
+```text
+4
+```
+
+---
+
+### Explanation 2
+
+Given:
+
+```text
+A = [1, 1, 0, 1, 1, 1, 0]
+```
+
+There are five `1`s in total.
+
+Swap the `0` at index `2` with the `1` at index `6`:
+
+```text
+Original:
+[1, 1, 0, 1, 1, 1, 0]
+```
+
+After swapping:
+
+```text
+[1, 1, 1, 1, 1, 1, 0]
+```
+
+This gives:
+
+```text
+6 consecutive 1's
+```
+
+Therefore, the answer should actually be:
+
+```text
+6
+```
+
+> **Note:** The maximum can never be greater than the total number of `1`s present in the original array.
+
+---
+
