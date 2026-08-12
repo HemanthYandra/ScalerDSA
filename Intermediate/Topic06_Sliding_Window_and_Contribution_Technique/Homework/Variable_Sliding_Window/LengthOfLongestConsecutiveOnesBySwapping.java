@@ -86,15 +86,15 @@ public class LengthOfLongestConsecutiveOnesBySwapping {
             return n;
         }
 
-        // Left and right pointers of the sliding window
-        int s = 0;
-        int e = 0;
-
         // Stores the number of zeros in the current window
         int zeroCount = 0;
 
         // Stores the maximum possible length
         int maxLen = 0;
+
+        // Left and right pointers of the sliding window
+        int s = 0;
+        int e = 0;
 
         // Sliding Window
         while (e < n) {

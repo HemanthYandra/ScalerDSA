@@ -262,7 +262,7 @@ Therefore, the maximum number of consecutive `1`s is:
 
 ---
 
-# Q2. Maximum Consecutive 1's by Swapping One 0 with One 1
+# Q3. Maximum Consecutive 1's by Swapping One 0 with One 1
 
 ## Problem Description
 
@@ -434,6 +434,157 @@ Therefore, the answer should actually be:
 ```
 
 > **Note:** The maximum can never be greater than the total number of `1`s present in the original array.
+
+---
+
+# Q4. Length of Longest Consecutive 1's (String)
+
+## Problem Description
+
+Given a binary string `A`, it is allowed to perform **at most one swap** between any `0` and `1`.
+
+Find and return the **maximum length of consecutive `1`s** that can be achieved after performing the swap.
+
+### Important
+
+The operation is a **swap**, not a replacement.
+
+This means:
+
+- One `0` can be swapped with one `1`.
+- The total number of `1`s in the string remains unchanged.
+- If the string already contains only `1`s, no swap is required.
+- The answer can never be greater than the total number of `1`s in the string.
+
+---
+
+## Problem Constraints
+
+- `1 <= length of string <= 1000000`
+- `A` contains only characters `0` and `1`.
+
+---
+
+## Input Format
+
+The only argument given is the string `A`.
+
+---
+
+## Output Format
+
+Return the length of the **longest consecutive `1`s** that can be achieved after at most one swap.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = "111000"
+```
+
+### Input 2
+
+```text
+A = "111011101"
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+3
+```
+
+### Output 2
+
+```text
+7
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+Given:
+
+```text
+A = "111000"
+```
+
+The string contains:
+
+```text
+111000
+```
+
+There are only `3` ones in the entire string.
+
+Even after swapping a `0` with a `1`, we cannot create more than `3` consecutive `1`s.
+
+Therefore, the maximum length is:
+
+```text
+3
+```
+
+---
+
+### Explanation 2
+
+Given:
+
+```text
+A = "111011101"
+```
+
+The string can be divided into groups of consecutive `1`s:
+
+```text
+111 0 111 0 1
+```
+
+There are `7` ones in total.
+
+Consider the `0` between the first two groups:
+
+```text
+111 0 111 0 1
+    ↑
+```
+
+Swap this `0` with the `1` at the end:
+
+```text
+111 1 111 0 0
+```
+
+which becomes:
+
+```text
+111111100
+```
+
+Now there are:
+
+```text
+7 consecutive 1's
+```
+
+Since the string contains exactly `7` ones, we cannot get more than `7`.
+
+Therefore, the answer is:
+
+```text
+7
+```
 
 ---
 
