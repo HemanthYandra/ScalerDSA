@@ -64,20 +64,20 @@ public class RotateMatrix {
     }
 
     public static void rotate(int[][] A) {
-        // Transpose the matrix.
+        // Transpose the matrix
         transpose(A);
 
-        // Reverse every row.
+        // Reverse every row
         reverseRows(A);
     }
 
     public static void transpose(int[][] A) {
         int n = A.length;
 
-        // Traverse the upper triangular part of the matrix.
+        // Traverse the upper triangular part of the matrix
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                // Swap A[i][j] with A[j][i].
+                // Swap A[i][j] with A[j][i]
                 int temp = A[i][j];
                 A[i][j] = A[j][i];
                 A[j][i] = temp;
