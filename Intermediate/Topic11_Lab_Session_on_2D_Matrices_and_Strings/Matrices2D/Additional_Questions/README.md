@@ -93,41 +93,9 @@ M = 3
 
 ### Explanation 1
 
-Given the matrix:
+The matrix is traversed in row wave form.
 
-```text
-1  2  3  4
-5  6  7  8
-9 10 11 12
-```
-
-Traverse the rows alternately.
-
-### Row 0
-
-Row `0` is even, so traverse from **left to right**:
-
-```text
-1 2 3 4
-```
-
-### Row 1
-
-Row `1` is odd, so traverse from **right to left**:
-
-```text
-8 7 6 5
-```
-
-### Row 2
-
-Row `2` is even, so traverse from **left to right**:
-
-```text
-9 10 11 12
-```
-
-Therefore, the row wave form is:
+Therefore, the output is:
 
 ```text
 1 2 3 4 8 7 6 5 9 10 11 12
@@ -137,55 +105,15 @@ Therefore, the row wave form is:
 
 ### Explanation 2
 
-Given the matrix:
+The matrix is traversed in row wave form.
 
-```text
-1  2  3
-4  5  6
-7  8  9
-10 11 12
-```
-
-### Row 0
-
-Traverse from **left to right**:
-
-```text
-1 2 3
-```
-
-### Row 1
-
-Traverse from **right to left**:
-
-```text
-6 5 4
-```
-
-### Row 2
-
-Traverse from **left to right**:
-
-```text
-7 8 9
-```
-
-### Row 3
-
-Traverse from **right to left**:
-
-```text
-12 11 10
-```
-
-Therefore, the row wave form is:
+Therefore, the output is:
 
 ```text
 1 2 3 6 5 4 7 8 9 12 11 10
 ```
 
 ---
-
 # Q2. Print Matrix in Column Wave Form
 
 ## Problem Description
@@ -281,49 +209,9 @@ M = 3
 
 ### Explanation 1
 
-Given the matrix:
+The matrix is traversed in column wave form.
 
-```text
-1  2  3  4
-5  6  7  8
-9 10 11 12
-```
-
-Traverse the columns alternately.
-
-### Column 0
-
-Column `0` is even, so traverse from **top to bottom**:
-
-```text
-1 5 9
-```
-
-### Column 1
-
-Column `1` is odd, so traverse from **bottom to top**:
-
-```text
-10 6 2
-```
-
-### Column 2
-
-Column `2` is even, so traverse from **top to bottom**:
-
-```text
-3 7 11
-```
-
-### Column 3
-
-Column `3` is odd, so traverse from **bottom to top**:
-
-```text
-12 8 4
-```
-
-Therefore, the column wave form is:
+Therefore, the output is:
 
 ```text
 1 5 9 10 6 2 3 7 11 12 8 4
@@ -333,47 +221,15 @@ Therefore, the column wave form is:
 
 ### Explanation 2
 
-Given the matrix:
+The matrix is traversed in column wave form.
 
-```text
-1  2  3
-4  5  6
-7  8  9
-10 11 12
-```
-
-### Column 0
-
-Column `0` is even, so traverse from **top to bottom**:
-
-```text
-1 4 7 10
-```
-
-### Column 1
-
-Column `1` is odd, so traverse from **bottom to top**:
-
-```text
-11 8 5 2
-```
-
-### Column 2
-
-Column `2` is even, so traverse from **top to bottom**:
-
-```text
-3 6 9 12
-```
-
-Therefore, the column wave form is:
+Therefore, the output is:
 
 ```text
 1 4 7 10 11 8 5 2 3 6 9 12
 ```
 
 ---
-
 # Q3. Maximum Element of a Matrix
 
 ## Problem Description
@@ -459,28 +315,7 @@ Max element of matrix is 21
 
 ### Explanation 1
 
-Given the matrix:
-
-```text
-12 65 89 74
-22 44 12 30
-10 12 97 19
-```
-
-Traverse every element of the matrix and keep track of the maximum value.
-
-The largest values encountered include:
-
-```text
-89
-97
-```
-
-Since `97` is greater than every other element, the maximum element is:
-
-```text
-97
-```
+The maximum element in the matrix is `97`.
 
 Therefore:
 
@@ -492,20 +327,7 @@ Max element of matrix is 97
 
 ### Explanation 2
 
-Given the matrix:
-
-```text
-5 18 7
-21 9 14
-```
-
-Traverse every element and compare it with the current maximum.
-
-The largest element is:
-
-```text
-21
-```
+The maximum element in the matrix is `21`.
 
 Therefore:
 
@@ -514,7 +336,6 @@ Max element of matrix is 21
 ```
 
 ---
-
 # Q4. Maximum of Every Row
 
 ## Problem Description
@@ -605,79 +426,9 @@ M = 3
 
 ### Explanation 1
 
-Given the matrix:
+The maximum elements of the rows are `21, 10, 21, 50, 49`.
 
-```text
-21 16 17 14
-7  8  10 1
-6  11 13 21
-32 50 6  10
-15 18 49 4
-```
-
-Find the maximum element from each row.
-
-### Row 0
-
-```text
-21 16 17 14
-```
-
-Maximum:
-
-```text
-21
-```
-
-### Row 1
-
-```text
-7 8 10 1
-```
-
-Maximum:
-
-```text
-10
-```
-
-### Row 2
-
-```text
-6 11 13 21
-```
-
-Maximum:
-
-```text
-21
-```
-
-### Row 3
-
-```text
-32 50 6 10
-```
-
-Maximum:
-
-```text
-50
-```
-
-### Row 4
-
-```text
-15 18 49 4
-```
-
-Maximum:
-
-```text
-49
-```
-
-Therefore, the result array is:
+Therefore, the output is:
 
 ```text
 21 10 21 50 49
@@ -687,60 +438,15 @@ Therefore, the result array is:
 
 ### Explanation 2
 
-Given the matrix:
+The maximum elements of the rows are `8, 10, 9`.
 
-```text
-5  2  8
-10 7  4
-3  9  6
-```
-
-Find the maximum element from each row.
-
-### Row 0
-
-```text
-5 2 8
-```
-
-Maximum:
-
-```text
-8
-```
-
-### Row 1
-
-```text
-10 7 4
-```
-
-Maximum:
-
-```text
-10
-```
-
-### Row 2
-
-```text
-3 9 6
-```
-
-Maximum:
-
-```text
-9
-```
-
-Therefore, the result array is:
+Therefore, the output is:
 
 ```text
 8 10 9
 ```
 
 ---
-
 # Q5. Reverse Each Row of a Matrix
 
 ## Problem Description
@@ -829,51 +535,7 @@ M = 5
 
 ### Explanation 1
 
-Given the matrix:
-
-```text
-1  2  3  4
-5  6  7  8
-9 10 11 12
-```
-
-Reverse the elements of each row individually.
-
-### Row 0
-
-```text
-1 2 3 4
-```
-
-After reversing:
-
-```text
-4 3 2 1
-```
-
-### Row 1
-
-```text
-5 6 7 8
-```
-
-After reversing:
-
-```text
-8 7 6 5
-```
-
-### Row 2
-
-```text
-9 10 11 12
-```
-
-After reversing:
-
-```text
-12 11 10 9
-```
+Each row is reversed individually.
 
 Therefore, the final matrix is:
 
@@ -887,38 +549,7 @@ Therefore, the final matrix is:
 
 ### Explanation 2
 
-Given the matrix:
-
-```text
-1  2  3  4  5
-6  7  8  9 10
-```
-
-Reverse each row independently.
-
-### Row 0
-
-```text
-1 2 3 4 5
-```
-
-becomes:
-
-```text
-5 4 3 2 1
-```
-
-### Row 1
-
-```text
-6 7 8 9 10
-```
-
-becomes:
-
-```text
-10 9 8 7 6
-```
+Each row is reversed individually.
 
 Therefore, the final matrix is:
 
@@ -928,7 +559,6 @@ Therefore, the final matrix is:
 ```
 
 ---
-
 # Q6. Reverse Each Column of a Matrix
 
 ## Problem Description
@@ -1021,79 +651,7 @@ M = 3
 
 ### Explanation 1
 
-Given the matrix:
-
-```text
-1  2  3  4
-5  6  7  8
-9 10 11 12
-```
-
-Reverse the elements of each column individually.
-
-### Column 0
-
-```text
-1
-5
-9
-```
-
-After reversing:
-
-```text
-9
-5
-1
-```
-
-### Column 1
-
-```text
-2
-6
-10
-```
-
-After reversing:
-
-```text
-10
-6
-2
-```
-
-### Column 2
-
-```text
-3
-7
-11
-```
-
-After reversing:
-
-```text
-11
-7
-3
-```
-
-### Column 3
-
-```text
-4
-8
-12
-```
-
-After reversing:
-
-```text
-12
-8
-4
-```
+Each column is reversed individually.
 
 Therefore, the final matrix is:
 
@@ -1107,70 +665,7 @@ Therefore, the final matrix is:
 
 ### Explanation 2
 
-Given the matrix:
-
-```text
-1  2  3
-4  5  6
-7  8  9
-10 11 12
-```
-
-Reverse each column independently.
-
-### Column 0
-
-```text
-1
-4
-7
-10
-```
-
-becomes:
-
-```text
-10
-7
-4
-1
-```
-
-### Column 1
-
-```text
-2
-5
-8
-11
-```
-
-becomes:
-
-```text
-11
-8
-5
-2
-```
-
-### Column 2
-
-```text
-3
-6
-9
-12
-```
-
-becomes:
-
-```text
-12
-9
-6
-3
-```
+Each column is reversed individually.
 
 Therefore, the final matrix is:
 
