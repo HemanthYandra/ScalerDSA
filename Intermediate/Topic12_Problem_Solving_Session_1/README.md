@@ -121,3 +121,74 @@ Therefore, the output is:
 ```text
 false
 ```
+
+---
+
+# 2. Majority Element
+
+## Problem Description
+
+Given an integer array `nums` of size `n`, return the **majority element**.
+
+The majority element is the element that appears **more than ⌊n / 2⌋ times**.
+
+You may assume that the majority element always exists in the array.
+
+---
+
+## Problem Constraints
+
+- `n == nums.length`
+- `1 <= n <= 5 * 10^4`
+- `-10^9 <= nums[i] <= 10^9`
+
+---
+
+## Input Format
+
+A single integer array `nums`.
+
+---
+
+## Output Format
+
+Return the majority element present in the array.
+
+---
+
+## Example Input 1
+
+```text
+nums = [3,2,3]
+```
+
+## Example Output 1
+
+```text
+3
+```
+
+## Example Explanation 1
+
+The element `3` appears 2 times, which is more than `⌊3 / 2⌋ = 1`.
+
+---
+
+## Example Input 2
+
+```text
+nums = [2,2,1,1,1,2,2]
+```
+
+## Example Output 2
+
+```text
+2
+```
+
+## Example Explanation 2
+
+The element `2` appears 4 times, which is more than `⌊7 / 2⌋ = 3`.
+
+---
+

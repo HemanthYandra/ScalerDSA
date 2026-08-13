@@ -279,59 +279,23 @@ N = 3
 
 ### Explanation 1
 
-Given the matrix:
-
-```text
-1 2
-3 4
-```
-
-First, transpose the matrix:
-
-```text
-1 3
-2 4
-```
-
-Then, reverse the order of the rows:
+The matrix after a 90 degree anti-clockwise rotation is:
 
 ```text
 3 4
 1 2
 ```
 
-Therefore, after rotating the matrix by `90` degrees anti-clockwise, the result is:
+Therefore, the output is:
 
 ```text
 3 4
 1 2
 ```
-
----
 
 ### Explanation 2
 
-Given the matrix:
-
-```text
-1 2 3
-4 5 6
-7 8 9
-```
-
-### Step 1: Transpose the Matrix
-
-The matrix becomes:
-
-```text
-1 4 7
-2 5 8
-3 6 9
-```
-
-### Step 2: Reverse the Order of Rows
-
-Reverse the order of the rows:
+The matrix after a 90 degree anti-clockwise rotation is:
 
 ```text
 3 6 9
@@ -339,7 +303,7 @@ Reverse the order of the rows:
 1 4 7
 ```
 
-Therefore, after rotating the matrix by `90` degrees anti-clockwise, the result is:
+Therefore, the output is:
 
 ```text
 3 6 9
