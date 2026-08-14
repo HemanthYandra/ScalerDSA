@@ -124,7 +124,7 @@ false
 
 ---
 
-# 2. Majority Element
+# Q2. Majority Element
 
 ## Problem Description
 
@@ -189,6 +189,109 @@ nums = [2,2,1,1,1,2,2]
 ## Example Explanation 2
 
 The element `2` appears 4 times, which is more than `⌊7 / 2⌋ = 3`.
+
+---
+
+# Q3. Majority Element II
+
+## Problem Description
+
+Given int array `nums` size `N`, find all elements appear more than `⌊N / 3⌋` times.
+
+---
+
+## Problem Constraints
+
+- `1 <= nums.length <= 5 * 10^4`
+- `-10^9 <= nums[i] <= 10^9`
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+nums = [3, 2, 3]
+```
+
+### Input 2
+
+```text
+nums = [1]
+```
+
+### Input 3
+
+```text
+nums = [1, 2]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+[3]
+```
+
+### Output 2
+
+```text
+[1]
+```
+
+### Output 3
+
+```text
+[1, 2]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+`3` appear `2` times.
+
+Since:
+
+```text
+⌊3 / 3⌋ = 1
+```
+
+`3` more than `1` time. Answer:
+
+```text
+[3]
+```
+
+### Explanation 2
+
+Array only one elem `1`. Answer:
+
+```text
+[1]
+```
+
+### Explanation 3
+
+Array two elem `1`, `2`.
+
+Since:
+
+```text
+⌊2 / 3⌋ = 0
+```
+
+both more than `0` times. Answer:
+
+```text
+[1, 2]
+```
 
 ---
 
