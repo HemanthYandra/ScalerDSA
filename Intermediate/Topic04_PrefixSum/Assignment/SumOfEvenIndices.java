@@ -43,7 +43,7 @@ public class SumOfEvenIndices {
         System.out.print("Enter the size of the array: ");
         int n = sc.nextInt();
 
-        System.out.println("Enter the Array elements: ");
+        System.out.println("Enter the array elements: ");
         int[] A = new int[n];
         for (int i = 0; i < n; i++) {
             A[i] = sc.nextInt();
