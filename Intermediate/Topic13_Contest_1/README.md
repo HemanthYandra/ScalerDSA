@@ -67,6 +67,36 @@ C = 30
 
 ---
 
+## Example Explanation
+
+### Explanation 1
+
+Consider subarray:
+
+```text
+[22, 18, 15]
+```
+
+Sum:
+
+```text
+22 + 18 + 15 = 55
+```
+
+Floor avg:
+
+```text
+⌊55 / 3⌋ = 18
+```
+
+Since `18 <= 30`, valid subarray exist. Answer:
+
+```text
+1
+```
+
+---
+
 # Q2. Range Divisibility
 
 ## Problem Description
@@ -121,6 +151,64 @@ B = [[1, 3], [4, 5], [2, 3], [0, 4]]
 ## Example Output
 
 ### Output 1
+
+```text
+[2, 1, 1, 3]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+Given:
+
+```text
+A = [7, 14, 21, 2, 5, 56]
+```
+
+Query `[1, 3]` -> subarray `[14, 21, 2]`:
+
+```text
+14 divisible by 7
+21 divisible by 7
+2 not divisible by 7
+```
+
+Count = `2`.
+
+Query `[4, 5]` -> subarray `[5, 56]`:
+
+```text
+5 not divisible by 7
+56 divisible by 7
+```
+
+Count = `1`.
+
+Query `[2, 3]` -> subarray `[21, 2]`:
+
+```text
+21 divisible by 7
+2 not divisible by 7
+```
+
+Count = `1`.
+
+Query `[0, 4]` -> subarray `[7, 14, 21, 2, 5]`:
+
+```text
+7 divisible by 7
+14 divisible by 7
+21 divisible by 7
+2 not divisible by 7
+5 not divisible by 7
+```
+
+Count = `3`.
+
+Therefore, the answer is:
 
 ```text
 [2, 1, 1, 3]
