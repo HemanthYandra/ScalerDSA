@@ -30,14 +30,18 @@ import java.util.*;
 public class InPlacePrefixSum {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.print("Enter the size of the array: ");
         int n = sc.nextInt();
+
         System.out.println("Enter the array elements: ");
         int[] A = new int[n];
         for (int i = 0; i < n; i++) {
             A[i] = sc.nextInt();
         }
+
         int[] res = solve(A);
+        
         System.out.println(Arrays.toString(res));
 
         sc.close();
