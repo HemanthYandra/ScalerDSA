@@ -128,3 +128,255 @@ B = [[1, 3], [4, 5], [2, 3], [0, 4]]
 
 ---
 
+# Q3. Alice and Capitalizing
+
+## Problem Description
+
+Alice is developing a function that processes strings for a text analysis tool. She wants to write a function that capitalizes the segment of a String `A` starting from the first occurrence of a given character `B` to the end of the string.
+
+If the given character is not found, the string should remain unchanged.
+
+For example, if the string is `"good morning"` and the given character is `"m"`, then the function should capitalize the segment that starts from the first occurrence of `"m"` to the end of the string.
+
+The resulting string will be:
+
+```text
+good MORNING
+```
+
+Complete the given function to help Alice accomplish this task.
+
+---
+
+## Problem Constraints
+
+- `1 <= A.length <= 10^5`
+- `A[i]` contains lowercase English alphabets and spaces.
+- `B.length = 1`
+- `B` contains a lowercase English Alphabet.
+
+---
+
+## Input Format
+
+The first argument is a string containing only lowercase alphabets and spaces.
+
+The second argument is a string of size `1` containing the character.
+
+---
+
+## Output Format
+
+Return a string denoting the string after performing the given operation.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = "good morning"
+B = "m"
+```
+
+### Input 2
+
+```text
+A = "scaler academy"
+B = "a"
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+good MORNING
+```
+
+### Output 2
+
+```text
+scALER ACADEMY
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+The first occurrence of `"m"` is in `"morning"`.
+
+Capitalize the string from `"m"` to the end:
+
+```text
+good morning
+     ↓
+good MORNING
+```
+
+Therefore, the answer is:
+
+```text
+good MORNING
+```
+
+### Explanation 2
+
+The first occurrence of `"a"` is at index `2` in `"scaler academy"`.
+
+Capitalize the string from that `"a"` to the end:
+
+```text
+scaler academy
+  ↓
+scALER ACADEMY
+```
+
+Therefore, the answer is:
+
+```text
+scALER ACADEMY
+```
+
+---
+
+# Q4. Noble Integer
+
+## Problem Description
+
+Given int array `A`, find if int `p` exist in array such that number of integers greater than `p` in array equals `p`.
+
+In other words, find element `p` such that:
+
+```text
+Number of elements greater than p = p
+```
+
+---
+
+## Problem Constraints
+
+- `1 <= |A| <= 2 * 10^5`
+- `-10^8 <= A[i] <= 10^8`
+
+---
+
+## Input Format
+
+First and only argument int array `A`.
+
+---
+
+## Output Format
+
+Return `1` if any such int `p` present, else return `-1`.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [3, 2, 1, 3]
+```
+
+### Input 2
+
+```text
+A = [-1, 0, 1, 2]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+1
+```
+
+### Output 2
+
+```text
+1
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+For:
+
+```text
+A = [3, 2, 1, 3]
+```
+
+Consider:
+
+```text
+p = 2
+```
+
+Exactly `2` integers greater than `2`:
+
+```text
+3, 3
+```
+
+Since:
+
+```text
+Number of elements greater than p = p
+2 = 2
+```
+
+`p = 2` noble integer. Answer:
+
+```text
+1
+```
+
+### Explanation 2
+
+For:
+
+```text
+A = [-1, 0, 1, 2]
+```
+
+Consider:
+
+```text
+p = 1
+```
+
+Exactly `1` integer greater than `1`:
+
+```text
+2
+```
+
+Since:
+
+```text
+Number of elements greater than p = p
+1 = 1
+```
+
+`p = 1` noble integer. Answer:
+
+```text
+1
+```
+
+---
+
