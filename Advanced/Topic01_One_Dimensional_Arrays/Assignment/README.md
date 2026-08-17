@@ -356,3 +356,6 @@ So the required answer is:
 ```text
 [ [2, 10] ]
 ```
+
+---
+
