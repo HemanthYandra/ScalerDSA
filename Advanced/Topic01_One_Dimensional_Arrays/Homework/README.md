@@ -275,3 +275,93 @@ Therefore, the answer is:
 
 ---
 
+# Q3. Merge Intervals - 2
+
+## Problem Description
+
+You have a set of non-overlapping intervals. You are given a new interval `[start, end]`. Insert this new interval into the set of intervals and merge if necessary.
+
+You may assume that the intervals were initially sorted according to their start times.
+
+---
+
+## Problem Constraints
+
+- `0 <= |intervals| <= 10^5`
+
+---
+
+## Input Format
+
+The first argument is the vector of intervals.
+
+The second argument is the new interval to be merged.
+
+---
+
+## Output Format
+
+Return the vector of intervals after inserting and merging the new interval.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+Given intervals [1, 3], [6, 9]
+
+Insert and merge [2, 5]
+```
+
+### Input 2
+
+```text
+Given intervals [1, 3], [6, 9]
+
+Insert and merge [2, 6]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+[[1, 5], [6, 9]]
+```
+
+### Output 2
+
+```text
+[[1, 9]]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+`[2, 5]` overlaps with `[1, 3]`, so they are merged into `[1, 5]`.
+
+Therefore, the answer is:
+
+```text
+[[1, 5], [6, 9]]
+```
+
+### Explanation 2
+
+`[2, 6]` overlaps with both `[1, 3]` and `[6, 9]`, so all three intervals are merged into `[1, 9]`.
+
+Therefore, the answer is:
+
+```text
+[[1, 9]]
+```
+
+---
+
