@@ -103,3 +103,175 @@ Therefore, the answer is:
 
 ---
 
+# Q2. Flip
+
+## Problem Description
+
+You are given a binary string `A` consisting of characters `0` and `1`.
+
+In a single operation, you can choose two indices `L` and `R`, such that:
+
+```text
+1 ≤ L ≤ R ≤ N
+```
+
+and flip all characters from `L` to `R`.
+
+By flipping, we mean:
+
+```text
+0 becomes 1
+1 becomes 0
+```
+
+Your aim is to perform at most one operation such that the number of `1`s in the final string is maximized.
+
+If you do not want to perform the operation, return an empty array.
+
+Otherwise, return an array containing two elements representing `L` and `R`.
+
+If there are multiple valid answers, return the lexicographically smallest pair `[L, R]`.
+
+A pair `[a, b]` is lexicographically smaller than `[c, d]` if:
+
+- `a < c`, or
+- `a == c and b < d`
+
+---
+
+## Problem Constraints
+
+- `1 <= length of A <= 100000`
+
+---
+
+## Input Format
+
+The first and only argument is a string `A`.
+
+---
+
+## Output Format
+
+Return an integer array containing `L` and `R`.
+
+If no operation can increase the number of `1`s, return an empty array `[]`.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = "010"
+```
+
+### Input 2
+
+```text
+A = "111"
+```
+
+### Input 3
+
+```text
+A = "110000111001"
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+[1, 1]
+```
+
+### Output 2
+
+```text
+[]
+```
+
+### Output 3
+
+```text
+[3, 6]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+| Pair [L, R] | Final String |
+|---|---|
+| [1, 1] | "110" |
+| [1, 2] | "100" |
+| [1, 3] | "101" |
+| [2, 2] | "000" |
+| [2, 3] | "001" |
+
+Both `[1, 1]` and `[1, 3]` result in the maximum number of `1`s.
+
+Since `[1, 1]` is lexicographically smaller, the answer is:
+
+```text
+[1, 1]
+```
+
+### Explanation 2
+
+The string already contains three `1`s, which is the maximum possible. Flipping any non-empty range would decrease the number of `1`s.
+
+Therefore, no operation is performed and the answer is:
+
+```text
+[]
+```
+
+### Explanation 3
+
+Given:
+
+```text
+A = "110000111001"
+```
+
+The substring from index `3` to `6` is:
+
+```text
+"0000"
+```
+
+Flipping this range turns it into:
+
+```text
+"1111"
+```
+
+So the string:
+
+```text
+1 1 0 0 0 0 1 1 1 0 0 1
+```
+
+becomes:
+
+```text
+1 1 1 1 1 1 1 1 1 0 0 1
+```
+
+This increases the number of `1`s from `6` to `10`, which is the maximum possible gain achievable with a single flip operation.
+
+Therefore, the answer is:
+
+```text
+[3, 6]
+```
+
+---
+
