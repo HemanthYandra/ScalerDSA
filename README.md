@@ -13,7 +13,7 @@ Each topic folder contains two subfolders:
 ## Modules
 
 - **Intermediate** — Time Complexity, Arrays, Prefix Sum, Carry Forward, Sliding Window, Sorting, Bit Manipulation, 2D Matrices, Strings, and more.
-- **Advanced** — (to be added)
+- **Advanced** — One-Dimensional Arrays, Two-Dimensional Arrays, and more.
 
 ## Notes
 
