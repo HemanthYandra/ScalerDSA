@@ -362,7 +362,7 @@ Therefore, the final array is:
 
 ---
 
-# Q4. Merge Sorted Overlapping Intervals - 2
+# Q4. Merge Sorted Overlapping Intervals
 
 ## Problem Description
 

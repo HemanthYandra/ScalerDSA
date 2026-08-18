@@ -451,3 +451,101 @@ Therefore, the answer is:
 
 ---
 
+# Q5. Longest Maintenance Window (Similar to Merge Sorted Overlapping Intervals Question in Assignment)
+
+## Problem Description
+
+Scaler Academy wants to schedule website maintenance during a period when no learners are active on the platform.
+
+You are given sorted data on the active hours of multiple learners in a 2-D array format `DATA`, where each interval is represented by a pair of integers `[start, end]`. The intervals are sorted based on their start values.
+
+Your task is to find the longest continuous period of time during which no learner is active. This period represents the best window to perform maintenance with minimal disruption.
+
+**Note:** Only gaps *between* consecutive learner-active intervals count as valid maintenance windows. Time before the first interval or after the last interval is not considered, since there is no defined boundary (e.g. platform's operating hours) given in this problem.
+
+---
+
+## Problem Constraints
+
+- `1 <= len(DATA) <= 100000`
+- `1 <= DATA[i][0] <= DATA[i][1] <= 100000`
+- `DATA` is sorted based on the start value `DATA[i][0]`
+
+**Note:** If `len(DATA) == 1` after merging (i.e. all intervals merge into one, or only one interval was given), there is no gap between intervals, so no valid maintenance window exists. In this case, return `[-1, -1]`.
+
+---
+
+## Input Format
+
+First argument is a list of intervals in a 2-Dimensional Array.
+
+---
+
+## Output Format
+
+Return the interval `[start, end]` representing the longest gap of no activity (the best maintenance window).
+
+If no such window exists, return `[-1, -1]`.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+[ [9, 11], [14, 16], [15, 20] ]
+```
+
+### Input 2
+
+```text
+[ [5, 10] ]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+[11, 14]
+```
+
+### Output 2
+
+```text
+[-1, -1]
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+Intervals `[14, 16]` and `[15, 20]` overlap, so they are merged into `[14, 20]`.
+
+Merged active intervals: `[ [9, 11], [14, 20] ]`
+
+The only gap between consecutive merged intervals is between `11` and `14`, giving a window of length `3`.
+
+Therefore, the required answer is:
+
+```text
+[11, 14]
+```
+
+### Explanation 2
+
+There is only a single interval `[5, 10]`, so there are no consecutive intervals to form a gap between.
+
+Therefore, the required answer is:
+
+```text
+[-1, -1]
+```
+
+---
+
