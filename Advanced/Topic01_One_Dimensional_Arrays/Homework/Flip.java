@@ -1,6 +1,8 @@
 /*
 	Approach
 
+    Use Kadane's Algorithm
+
 	Flipping a range [L, R] changes the count of 1s by:
 		(zeros turned into ones) - (ones turned into zeros)
 	in that range.
