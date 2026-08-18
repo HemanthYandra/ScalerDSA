@@ -252,88 +252,112 @@ Therefore, the final array is:
 
 ---
 
-# Q3. Continuous Sum Query (Follow Up question for Range Increment Queries)
+# Q3. Range Update Queries (Follow Up question for Range Increment Queries)
 
 ## Problem Description
 
-There are `A` beggars sitting in a row outside a temple. Each beggar initially has an empty pot. When the devotees come to the temple, they donate some amount of coins to these beggars. Each devotee gives a fixed amount of coin (according to their faith and ability) to some `K` beggars sitting next to each other.
+Initially, all elements of an array `arr` of length `N` are `0`.
 
-Given the amount `P` donated by each devotee to the beggars ranging from `L` to `R` index, where `1 <= L <= R <= A`, find out the final amount of money in each beggar's pot at the end of the day, provided they don't fill their pots by any other means.
+You are given `Q` queries. Each query contains three integers `i`, `j`, and `x`.
 
-For `i-th` devotee `B[i][0] = L`, `B[i][1] = R`, `B[i][2] = P`, given by the 2D array `B`.
+For every query, add `x` to all elements of the array from index `i` to index `j` (inclusive), where `i <= j`.
+
+After processing all the queries, return the final state of the array.
 
 ---
 
-## Problem Constraints
+## Example
 
-- `1 <= A <= 2 * 10^5`
-- `1 <= L <= R <= A`
-- `1 <= P <= 10^3`
-- `0 <= len(B) <= 10^5`
+Suppose:
+
+```text
+N = 5
+Q = 3
+```
+
+The queries are:
+
+```text
+i    j    x
+0    2    10
+1    3    20
+2    4    30
+```
+
+Initially:
+
+```text
+arr = [0, 0, 0, 0, 0]
+```
+
+After applying all queries, the final array is:
+
+```text
+[10, 30, 60, 50, 30]
+```
+
+---
+
+## Constraints
+
+- `1 <= N <= 10^5`
+- `1 <= Q <= 10^5`
+- `0 <= i <= j <= N - 1`
+- `-10^3 <= x <= 10^3`
 
 ---
 
 ## Input Format
 
-The first argument is a single integer `A`.
+The input consists of:
 
-The second argument is a 2D integer array `B`.
+- The first line containing two integers `N` and `Q`, representing the size of the array and the number of queries.
+- The next `Q` lines contain three integers `i`, `j`, and `x`, representing each query.
 
 ---
 
 ## Output Format
 
-Return an array (0 based indexing) that stores the total number of coins in each beggar's pot.
+Return the final state of the array after processing all `Q` queries.
 
 ---
 
 ## Example Input
 
-### Input 1
-
 ```text
-A = 5
-B = [[1, 2, 10], [2, 3, 20], [2, 5, 25]]
+5
+3
+0 2 10
+1 3 20
+2 4 30
 ```
 
 ---
 
 ## Example Output
 
-### Output 1
-
 ```text
-10 55 45 25 25
+10 30 60 50 30
 ```
 
 ---
 
 ## Example Explanation
 
-### Explanation 1
-
-First devotee donated `10` coins to beggars ranging from `1` to `2`.
-
-Final amount in each beggar's pot after first devotee:
+Initially:
 
 ```text
-[10, 10, 0, 0, 0]
+[0, 0, 0, 0, 0]
 ```
 
-Second devotee donated `20` coins to beggars ranging from `2` to `3`.
+- Query `(0, 2, 10)` adds `10` to indices `0` to `2`.
+- Query `(1, 3, 20)` adds `20` to indices `1` to `3`.
+- Query `(2, 4, 30)` adds `30` to indices `2` to `4`.
 
-Final amount in each beggar's pot after second devotee:
-
-```text
-[10, 30, 20, 0, 0]
-```
-
-Third devotee donated `25` coins to beggars ranging from `2` to `5`.
-
-Final amount in each beggar's pot after third devotee:
+Therefore, the final array is:
 
 ```text
-[10, 55, 45, 25, 25]
+[10, 30, 60, 50, 30]
 ```
 
 ---

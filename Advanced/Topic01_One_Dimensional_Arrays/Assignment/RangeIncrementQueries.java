@@ -37,34 +37,34 @@
 
 		  arr = [0, 3, 0, 4, -2, 0, 0]
 
-	5. Create a separate prefix sum array pSum.
-		- The arr array stores only where each increment starts.
-		- The pSum array stores the actual accumulated value
-		  at every index.
+	5. Convert arr into a prefix sum in-place.
+		- arr currently stores only where each increment starts.
+		- Turning it into a prefix sum makes each index hold
+		  the actual accumulated value, without needing a
+		  separate array.
 
-	6. Initialize pSum[0] with arr[0].
-
-		- pSum[0] = arr[0]
+	6. arr[0] already holds its correct final value, so the
+	   prefix sum starts from index 1.
 
 	7. Calculate the prefix sum for the remaining indices.
 
 		- Use:
 
-		  pSum[i] = pSum[i - 1] + arr[i];
+		  arr[i] += arr[i - 1];
 
 		- This carries all increments received by the previous
 		  index into the current index.
 
 		- For example:
 
-		  arr  = [0, 3, 0, 4, -2, 0, 0]
-		  pSum = [0, 3, 3, 7, 5, 5, 5]
+		  before: arr = [0, 3, 0, 4, -2, 0, 0]
+		  after:  arr = [0, 3, 3, 7, 5, 5, 5]
 
-		- Therefore, pSum represents the final state of the array.
+		- Therefore, arr now represents the final state of the array.
 
-	8. Return pSum as the final result.
-		- The original arr array remains unchanged.
-		- This is why a separate pSum array is used.
+	8. Return arr as the final result.
+		- No separate prefix sum array is used.
+		- arr is overwritten in-place to save space.
 
 	9. The main advantage of this technique is that each query
 	   is processed in O(1).
@@ -78,9 +78,11 @@
 		- Processing Q queries takes O(Q).
 		- Calculating the prefix sum takes O(N).
 
-	Space : O(N)
-		- The arr array of size N is used to store the increments.
-		- The prefix sum array pSum of size N is used for the result.
+	Space : O(1)
+		- Excluding the output array, only a constant amount
+		  of extra space is used.
+		- The increments are recorded in arr itself, and the
+		  prefix sum is computed in-place over the same array.
 */
 
 package Advanced.Topic01_One_Dimensional_Arrays.Assignment;
@@ -98,7 +100,7 @@ public class RangeIncrementQueries {
 
         int[][] queries = new int[q][2];
 
-        System.out.print("Enter the queries: ");
+        System.out.println("Enter the queries: ");
         for(int i = 0; i < q; i++) {
             queries[i][0] = sc.nextInt();
             queries[i][1] = sc.nextInt();
@@ -124,18 +126,14 @@ public class RangeIncrementQueries {
             arr[idx] += value;
         }
 
-        // Calculate the prefix sum to propagate
-        // each increment to all following indices
-        int[] pSum = new int[n];
-
-        pSum[0] = arr[0];
-
-        for(int i = 1; i < n; i++) {
-            pSum[i] = pSum[i - 1] + arr[i];
-        }
+        // Calculate the prefix sum in-place to propagate
+		// each increment to all following indices
+		for(int i = 1; i < n; i++) {
+			arr[i] += arr[i - 1];
+		}
 
         // Return the final array after applying
         // all the range increment queries
-        return pSum;
+        return arr;
     }
 }
