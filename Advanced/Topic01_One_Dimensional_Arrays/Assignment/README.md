@@ -1,6 +1,79 @@
 # Q1. Max Sum Contiguous Subarray
 
-## Problem Description
+## Problem Description (In Interview/Coding rounds)
+
+As a cryptocurrency trader, you have a unique advantage: access to predicted data that outlines the daily price changes of a specific cryptocurrency for the next N days. Your goal is to maximize your profit based on these predictions.
+
+You are provided with an array A consisting of N integers, where each integer represents the predicted change in the crypto's price for that day. A positive value indicates a profit (the price goes up), while a negative value indicates a loss (the price goes down). The total profit or loss you can make is determined by the sum of the daily price changes for the period you choose to hold onto the crypto.
+
+Your goal is to Determine the maximum profit you can achieve, under the condition that you must buy before you can sell.
+
+---
+
+## Problem Constraints
+
+- `1 <= N <= 10^6`
+- `-1000 <= A[i] <= 1000`
+
+---
+
+## Input Format
+
+The first and the only argument contains an integer array, `A`.
+
+---
+
+## Output Format
+
+Return an integer representing the maximum possible sum of the contiguous subarray.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [-20, 30, 40, -10, 50, -100, 70]
+```
+
+### Input 2
+
+```text
+A = [-3, 4, 6, 8, -10, 2, 7]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+110
+```
+
+### Output 2
+
+```text
+18
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+The subarray `[30, 40, -10, 50]` has the maximum possible sum of `110`.
+
+### Explanation 2
+
+The subarray `[4, 6, 8]` has the maximum possible sum of `18`.
+
+---
+
+## Problem Description (In simple words)
 
 Given an array `A` of length `N`, your task is to find the maximum possible sum of any non-empty contiguous subarray.
 

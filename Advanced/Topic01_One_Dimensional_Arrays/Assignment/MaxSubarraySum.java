@@ -1,20 +1,27 @@
 /*
 	Approach
 
-	1. Initialize curr_max and overall_max with the first element.
-		- curr_max stores the maximum sum of a subarray ending at the current index.
-		- overall_max stores the maximum subarray sum found so far.
+    Use Kadane's Algorithm
 
-	2. Traverse the array from the second element.
+	1. Initialize curr_sum to 0 and max_sum to Integer.MIN_VALUE.
+		- curr_sum stores the sum of the current subarray ending at index i.
+		- max_sum stores the maximum subarray sum found so far.
 
-	3. If curr_max is positive, add the current element to it.
-		- A positive previous sum can increase the sum of the current subarray.
+	2. Traverse the array from the first element.
 
-	4. If curr_max is not positive, start a new subarray from the current element.
+	3. Add the current element to curr_sum.
 
-	5. Update overall_max with the maximum of curr_max and overall_max.
+	4. Update max_sum with the maximum of max_sum and curr_sum.
+		- This ensures every prefix sum (including negative or single-element
+		  sums) is considered, so the answer is correct even if all elements
+		  are negative.
 
-	6. Return overall_max.
+	5. If curr_sum becomes negative, reset it to 0.
+		- A negative running sum can only reduce the sum of any future
+		  subarray, so it's discarded and a new subarray starts fresh
+		  from the next element.
+
+	6. Return max_sum.
 
 	Complexity Analysis
 
@@ -50,23 +57,21 @@ public class MaxSubarraySum {
     public static int solve(int[] A) {
         int n = A.length;
 
-        int curr_max = A[0];
-        int overall_max = A[0];
+        int curr_sum = 0;
+        int max_sum = Integer.MIN_VALUE;
 
-        // Start from index 1 because A[0] is already included
-        for(int i = 1; i < n; i++) {
-            if(curr_max > 0) {
-                curr_max += A[i];
-            }
-            else {
-                curr_max = A[i];
-            }
+        // Find the maximum sum contiguous subarray
+        for(int i = 0; i < n; i++) {
+            curr_sum += A[i];
 
-            if (curr_max > overall_max) {
-                overall_max = curr_max;
+            max_sum = Math.max(max_sum, curr_sum);
+
+            // Start a new subarray if current sum becomes negative
+            if(curr_sum < 0) {
+                curr_sum = 0;
             }
         }
 
-        return overall_max;
+        return max_sum;
     }
 }
