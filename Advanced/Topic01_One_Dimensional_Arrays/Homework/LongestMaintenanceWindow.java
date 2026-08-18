@@ -101,7 +101,7 @@ public class LongestMaintenanceWindow {
 
             // overlap -> extend current merged interval
             if(s2 <= e1) {
-             // s1 = Math.min(s1, s2);   // This is not needed, since s1 <= s2 always (sorted input)
+                s1 = Math.min(s1, s2);   // This is not needed, since s1 <= s2 always (sorted input)
                 e1 = Math.max(e1, e2);
             } 
             // no overlap -> gap found between e1 and s2

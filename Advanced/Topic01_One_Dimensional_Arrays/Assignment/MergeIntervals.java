@@ -88,7 +88,7 @@ public class MergeIntervals {
 
             // overlap -> extend current interval
             if(s2 <= e1) {
-             // s1 = Math.min(s1, s2);   // This is not needed, since s1 <= s2 always (sorted input)
+                s1 = Math.min(s1, s2);   // This is not needed, since s1 <= s2 always (sorted input)
                 e1 = Math.max(e1, e2);
             }
             // no overlap -> close off current interval, start a new one
