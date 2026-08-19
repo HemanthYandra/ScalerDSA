@@ -168,3 +168,212 @@ The minimum value is `2019`.
 
 ---
 
+# Q3. Sum of All Submatrices
+
+## Problem Description
+
+Given a 2D Matrix `A` of dimensions `N × N`, return the sum of all possible submatrices.
+
+## Problem Constraints
+
+- `1 <= N <= 30`
+- `0 <= A[i][j] <= 10`
+
+## Input Format
+
+Single argument representing a 2-D array `A` of size `N × N`.
+
+## Output Format
+
+Return an integer denoting the sum of all possible submatrices.
+
+## Example Input
+
+### Input 1
+```
+A = [ [1, 1],
+      [1, 1] ]
+```
+
+### Input 2
+```
+A = [ [1, 2],
+      [3, 4] ]
+```
+
+## Example Output
+
+### Output 1
+```
+16
+```
+
+### Output 2
+```
+40
+```
+
+## Example Explanation
+
+### Example 1
+
+```
+Number of submatrices with 1 element = 4
+Sum = 4 × 1 = 4
+
+Number of submatrices with 2 elements = 4
+Sum = 4 × 2 = 8
+
+Number of submatrices with 3 elements = 0
+
+Number of submatrices with 4 elements = 1
+Sum = 1 × 4 = 4
+
+Total Sum = 4 + 8 + 4 = 16
+```
+
+### Example 2
+
+```
+The submatrices are:
+[1], [2], [3], [4]
+[1, 2], [3, 4]
+[1, 3], [2, 4]
+[[1, 2], [3, 4]]
+
+Total sum = 40
+```
+
+---
+
+# Q4. First Missing Natural Number
+
+## Problem Description
+
+You are given an **unsorted array of integers** `A` of length `N`.
+
+Your task is to find the **first missing natural number** from the array.
+
+A **natural number** is a positive integer starting from `1`.
+
+The **first missing natural number** is the smallest positive integer that does not appear in the given array.
+
+> **Note:** The array may contain negative numbers, `0`, duplicate values, and positive numbers in any order.
+
+---
+
+## Problem Constraints
+
+- `1 <= N <= 10^5`
+- `-10^9 <= A[i] <= 10^9`
+
+---
+
+## Input Format
+
+The first and only argument is an integer array `A`.
+
+---
+
+## Output Format
+
+Return a single integer denoting the **first missing natural number**.
+
+---
+
+## Example Input
+
+### Input 1
+
+```text
+A = [3, -2, 1, 2, 7]
+```
+
+### Input 2
+
+```text
+A = [-9, 2, 6, 4, -8, 1, 3]
+```
+
+### Input 3
+
+```text
+A = [-2, 4, -1, -6, 3, 7, 8, 4, -3]
+```
+
+---
+
+## Example Output
+
+### Output 1
+
+```text
+4
+```
+
+### Output 2
+
+```text
+5
+```
+
+### Output 3
+
+```text
+1
+```
+
+---
+
+## Example Explanation
+
+### Explanation 1
+
+For the array:
+
+```text
+A = [3, -2, 1, 2, 7]
+```
+
+The natural numbers `1`, `2`, and `3` are present, but `4` is missing.
+
+Hence, the answer is:
+
+```text
+4
+```
+
+### Explanation 2
+
+For the array:
+
+```text
+A = [-9, 2, 6, 4, -8, 1, 3]
+```
+
+The natural numbers `1`, `2`, `3`, and `4` are present, but `5` is missing.
+
+Hence, the answer is:
+
+```text
+5
+```
+
+### Explanation 3
+
+For the array:
+
+```text
+A = [-2, 4, -1, -6, 3, 7, 8, 4, -3]
+```
+
+The number `1` is not present in the array.
+
+Hence, the first missing natural number is:
+
+```text
+1
+```
+
+---
+
