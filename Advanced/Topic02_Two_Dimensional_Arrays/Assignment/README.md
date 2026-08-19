@@ -52,10 +52,10 @@ false
 
 ## Example Explanation
 
-**Explanation 1**
+### Explanation 1
 The element `2` is present in the matrix at row `0`, column `1`. Therefore, the output is `true`.
 
-**Explanation 2**
+### Explanation 2
 The element `7` is not present in the matrix. Therefore, the output is `false`.
 
 ---
