@@ -82,7 +82,7 @@ Row `3` has maximum number of `1`s.
 
 ---
 
-# Q2. Minimum SwapsSolved
+# Q2. Minimum Swaps
 
 ## Problem Description
 
