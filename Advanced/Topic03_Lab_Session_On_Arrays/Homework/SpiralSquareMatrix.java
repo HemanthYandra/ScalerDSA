@@ -86,9 +86,7 @@
 
 package Advanced.Topic03_Lab_Session_On_Arrays.Homework;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
+import java.util.*;
 public class SpiralSquareMatrix {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
