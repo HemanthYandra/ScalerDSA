@@ -32,12 +32,12 @@ public class AllBitwiseOperators {
 
         // Bitwise NOT: Inverts every bit of a
         // ~a = -(a + 1)
-        int negationOfA = ~a;
-        System.out.println("~a = " + negationOfA);
+        int notA = ~a;
+        System.out.println("~a = " + notA);
 
         // Bitwise NOT: Inverts every bit of b
         // ~b = -(b + 1)
-        int negationOfB = ~b;
-        System.out.println("~b = " + negationOfB);
+        int notB = ~b;
+        System.out.println("~b = " + notB);
     }
 }
