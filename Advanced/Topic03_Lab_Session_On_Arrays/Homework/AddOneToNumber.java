@@ -1,39 +1,38 @@
 /*
-    Approach
+	Approach
 
-    Reverse Traversal with Carry Propagation
+	Add One to Number Using Carry Propagation
 
-    1. Since adding one only affects digits from the rightmost end, and a
-       carry propagates leftward, traverse the array from index n - 1
-       down to 0.
+	1. The array represents a non-negative integer where each element
+	   contains one digit of the number.
 
-    2. At each index i, add the current carry (starts at 1, since we are
-       adding one to the number) to A[i].
-       - If the resulting sum is 10, set A[i] to 0 and keep carry as 1
-         to propagate to the next digit on the left.
-       - Otherwise, set A[i] to the sum and set carry to 0, meaning no
-         further digits need to change.
+	2. Start from the last digit because adding 1 begins from the
+	   least significant digit.
 
-    3. Once the traversal ends, if carry is 0, no new leading digit is
-       needed, so return A as is.
+	3. Maintain a `carry` initialized to 1 because we need to add 1
+	   to the given number.
 
-    4. If carry is still 1 after processing every digit (this happens
-       only when every digit was a 9, e.g. 999 -> 1000), create a new
-       array of size n + 1, place 1 at index 0, and copy the remaining
-       digits (now all zeros) from A into the rest of the array.
+	4. For every digit from right to left:
+	   - Add the carry to the current digit.
+	   - If the result is 10, set the current digit to 0 and keep
+	     the carry as 1.
+	   - Otherwise, store the result and set carry to 0.
 
-    5. Return the final result array.
+	5. After processing all digits, if the carry is still 1,
+	   add 1 at the beginning of the array.
+	   This handles cases such as [9, 9, 9] -> [1, 0, 0, 0].
 
-    Complexity Analysis
+	6. Remove leading zeros from the result while keeping at least
+	   one digit in the array.
 
-    Time : O(N)
-        We traverse the array once from right to left, and in the worst
-        case (all digits are 9) we copy it once more into a new array.
+	Complexity Analysis
 
-    Space : O(N)
-        Only used when a carry overflows past the most significant digit,
-        requiring a new array of size N + 1. Otherwise the input array
-        is modified in place.
+	Time : O(N)
+		Each digit is processed at most once.
+
+	Space : O(1) Auxiliary Space
+		Only a constant number of variables are used apart from
+		the input ArrayList.
 */
 
 package Advanced.Topic03_Lab_Session_On_Arrays.Homework;
@@ -46,58 +45,51 @@ public class AddOneToNumber {
         System.out.print("Enter the size of the array: ");
         int n = sc.nextInt();
 
-        int[] A = new int[n];
+        ArrayList<Integer> A = new ArrayList<>();
 
         System.out.println("Enter array elements: ");
         for(int i = 0; i < n; i++) {
-            A[i] = sc.nextInt();
+            A.add(sc.nextInt());
         }
 
-        int[] result = solve(A);
+        ArrayList<Integer> result = solve(A);
 
-        System.out.println(Arrays.toString(result));
+        System.out.println(result);
 
         sc.close();
     }
 
-    public static int[] solve(int[] A) {
-        int n = A.length;
+    public static ArrayList<Integer> solve(ArrayList<Integer> A) {
+        int n = A.size();
 
-        // carry starts at 1 since we are adding one to the number
+        // Initialize carry as 1 because we need to add one
         int carry = 1;
 
-        // process digits from least significant (rightmost) to most
-        // significant (leftmost), propagating the carry as we go
-        for(int i = n - 1; i >= 0; i--) {
-            int num = A[i] + carry;
+        // Process digits from right to left
+        for (int i = n - 1; i >= 0; i--) {
+            int num = A.get(i) + carry;
 
-            if(num == 10) {
-                // digit overflowed, reset to 0 and carry 1 into the next digit
-                A[i] = 0;
+            // If the digit becomes 10, set it to 0 and carry 1
+            if (num == 10) {
+                A.set(i, 0);
                 carry = 1;
-            }
-            else {
-                // digit absorbed the carry, no further propagation needed
-                A[i] = num;
+            } else {
+                // Store the updated digit and stop carrying
+                A.set(i, num);
                 carry = 0;
             }
         }
 
-        // carry died out somewhere in the middle, A already holds the answer
-        if (carry == 0) {
-            return A;
+        // If carry remains, add 1 at the beginning
+        if (carry == 1) {
+            A.add(0, 1);
         }
 
-        // carry survived past index 0, meaning every digit was a 9
-        // (e.g. 999 -> 1000), so we need one extra digit at the front
-        int[] result = new int[n + 1];
-        result[0] = 1;
-
-        // copy the remaining digits (all zeros at this point) after the leading 1
-        for (int i = 0; i < n; i++) {
-            result[i + 1] = A[i];
+        // Remove leading zeros while keeping at least one digit
+        while (A.size() > 1 && A.get(0) == 0) {
+            A.remove(0);
         }
 
-        return result;
+        return A;
     }
 }
