@@ -84,7 +84,6 @@ public class RainWaterTrapped {
 
         // Calculate water trapped at each index
         for (int i = 1; i < n - 1; i++) {
-
             // Water at index i is limited by the shorter of
             // the tallest bars on its left and right
             waterStored = Math.min(left[i], right[i]) - A[i];
