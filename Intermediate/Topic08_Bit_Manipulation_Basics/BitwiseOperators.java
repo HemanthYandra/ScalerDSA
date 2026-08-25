@@ -1,0 +1,43 @@
+package Intermediate.Topic08_Bit_Manipulation_Basics;
+
+import java.util.*;
+public class BitwiseOperators {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter any positive number(a): ");
+        int a = sc.nextInt();
+
+        System.out.print("Enter any positive number(b): ");
+        int b = sc.nextInt();
+
+        solve(a, b);
+
+        sc.close();
+    }
+
+    public static void solve(int a, int b) {
+
+        // Bitwise AND: Sets a bit to 1 only when both bits are 1
+        int andOperator = a & b;
+        System.out.println("a & b = " + andOperator);
+
+        // Bitwise OR: Sets a bit to 1 when at least one bit is 1
+        int orOperator = a | b;
+        System.out.println("a | b = " + orOperator);
+
+        // Bitwise XOR: Sets a bit to 1 when the two bits are different
+        int xorOperator = a ^ b;
+        System.out.println("a ^ b = " + xorOperator);
+
+        // Bitwise NOT: Inverts every bit of a
+        // ~a = -(a + 1)
+        int negationOfA = ~a;
+        System.out.println("~a = " + negationOfA);
+
+        // Bitwise NOT: Inverts every bit of b
+        // ~b = -(b + 1)
+        int negationOfB = ~b;
+        System.out.println("~b = " + negationOfB);
+    }
+}
