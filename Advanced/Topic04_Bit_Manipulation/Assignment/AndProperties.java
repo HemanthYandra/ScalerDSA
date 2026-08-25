@@ -1,6 +1,6 @@
 
 
-package Intermediate.Topic08_Bit_Manipulation_Basics;
+package Advanced.Topic04_Bit_Manipulation.Assignment;
 
 import java.util.*;
 public class AndProperties {
