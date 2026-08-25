@@ -1,33 +1,37 @@
 /*
-	Approach
+    Approach
 
-    Prefix Max / Suffix Max (Left-Right Boundary)
+    Prefix Max / Suffix Max (Running Max Variable)
 
-	1. For every index i, the amount of water that can be stored depends on
-	   the tallest building on its left and the tallest building on its right.
+    1. For every index i, the amount of water that can be stored depends on
+       the tallest building on its left and the tallest building on its right.
 
-	2. Create a left[] array where left[i] stores the maximum height of a
-	   building from index 0 to i.
+    2. Create a left[] array where left[i] stores the maximum height of a
+       building from index 0 to i.
+       - Maintain a running variable maxL, updating it with A[i] as we
+         scan left to right, and store it into left[i] at each step.
 
-	3. Create a right[] array where right[i] stores the maximum height of a
-	   building from index i to n - 1.
+    3. Create a right[] array where right[i] stores the maximum height of a
+       building from index i to n - 1.
+       - Maintain a running variable maxR, updating it with A[i] as we
+         scan right to left, and store it into right[i] at each step.
 
-	4. For every index from 1 to n - 2, calculate the water stored above
-	   that building using:
-	   
-	   waterStored = min(left[i], right[i]) - A[i]
+    4. For every index from 1 to n - 2, calculate the water stored above
+       that building using:
 
-	5. Add the water stored at every index to get the total amount of
-	   trapped rainwater.
+       waterStored = min(left[i], right[i]) - A[i]
 
-	Complexity Analysis
+    5. Add the water stored at every index to get the total amount of
+       trapped rainwater.
 
-	Time : O(N)
-		We traverse the array three times to build the left[], right[]
-		arrays and calculate the total trapped water.
+    Complexity Analysis
 
-	Space : O(N)
-		We use two auxiliary arrays, left[] and right[], each of size N.
+    Time : O(N)
+        We traverse the array three times to build the left[], right[]
+        arrays and calculate the total trapped water.
+
+    Space : O(N)
+        We use two auxiliary arrays, left[] and right[], each of size N.
 */
 
 package Advanced.Topic03_Lab_Session_On_Arrays.Assignment;
@@ -65,7 +69,7 @@ public class RainWaterTrapped {
         int[] right = new int[n];
 
         int maxL = A[0];
-        int maxR = A[0];
+        int maxR = A[n - 1];
 
         // Build the left maximum array
         for (int i = 0; i < n; i++) {
@@ -79,14 +83,13 @@ public class RainWaterTrapped {
             right[i] = maxR;
         }
 
-        int waterStored = 0;
         int totalWater = 0;
 
         // Calculate water trapped at each index
         for (int i = 1; i < n - 1; i++) {
             // Water at index i is limited by the shorter of
             // the tallest bars on its left and right
-            waterStored = Math.min(left[i], right[i]) - A[i];
+            int waterStored = Math.min(left[i], right[i]) - A[i];
 
             totalWater += waterStored;
         }
