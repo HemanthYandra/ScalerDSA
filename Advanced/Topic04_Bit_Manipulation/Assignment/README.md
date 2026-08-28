@@ -513,7 +513,7 @@ Therefore, the answer is:
 
 ---
 
-# Q6. Single Number II
+# Q6. Single Number III
 
 ## Problem Description
 

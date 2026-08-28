@@ -53,7 +53,7 @@
 package Advanced.Topic04_Bit_Manipulation.Assignment;
 
 import java.util.*;
-public class SingleNumberII {
+public class SingleNumberIII {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
