@@ -180,7 +180,7 @@ Therefore, the answer is:
 
 ---
 
-# Q3. Tower of Hanoi
+# Tower of Hanoi
 
 ## Problem Description
 
@@ -193,7 +193,7 @@ Initially, all the disks are placed on the source tower in decreasing order of s
 The following rules must be followed:
 
 1. Only one disk can be moved at a time.
-2. Only the top disk from any tower can be moved.
+2. Only the top disk of a tower can be moved.
 3. A larger disk cannot be placed on top of a smaller disk.
 4. All `N` disks must be moved from the source tower to the destination tower.
 5. The problem must be solved using recursion.
@@ -201,12 +201,10 @@ The following rules must be followed:
 For every move, print the disk number along with its source and destination towers in the following format:
 
 ```text
-Move the disk X from src to dest
+Move the disk N from src to dest
 ```
 
-where `X` is the disk number.
-
-The names of the three towers are given as input.
+Here, `N` represents the **number of the disk being moved in that particular recursive call**, `src` represents the current source tower, and `dest` represents the current destination tower.
 
 ## Problem Constraints
 
@@ -218,25 +216,21 @@ The names of the three towers are given as input.
 The input consists of four lines:
 
 - The first line contains an integer `N`, representing the number of disks.
-- The second line contains the name of the **source tower**.
-- The third line contains the name of the **destination tower**.
-- The fourth line contains the name of the **helper tower**.
+- The second line contains the name of the source tower.
+- The third line contains the name of the destination tower.
+- The fourth line contains the name of the helper tower.
 
 ## Output Format
 
 Print every move required to transfer all `N` disks from the source tower to the destination tower.
 
-Each move should be printed in the following format:
+For each move, print:
 
 ```text
-Move the disk X from src to dest
+Move the disk N from src to dest
 ```
 
-where:
-
-- `X` is the disk number.
-- `src` is the current source tower.
-- `dest` is the current destination tower.
+where `N` is the disk number being moved, `src` is the current source tower, and `dest` is the current destination tower.
 
 ## Example Input 1
 
@@ -265,7 +259,7 @@ There are 3 disks, with `A` as the source, `B` as the destination, and `C` as th
 
 First, the top 2 disks are moved from `A` to `C`. Then disk 3 is moved from `A` to `B`. Finally, the 2 disks on `C` are moved to `B`.
 
-Therefore, all 3 disks are transferred from `A` to `B` in `7` moves.
+Thus, all 3 disks are successfully transferred from `A` to `B` in `7` moves.
 
 ## Example Input 2
 
@@ -290,7 +284,7 @@ There are 2 disks, with `A` as the source, `C` as the destination, and `B` as th
 
 First, disk 1 is moved from `A` to `B`. Then disk 2 is moved from `A` to `C`. Finally, disk 1 is moved from `B` to `C`.
 
-Thus, both disks are successfully moved from `A` to `C` in `3` moves.
+Thus, both disks are successfully transferred from `A` to `C` in `3` moves.
 
 ---
 
