@@ -1,43 +1,28 @@
 /*
 	Approach
 
-	1. We need to move A disks from Tower 1 (source) to Tower 3
-	   (destination) using Tower 2 as a helper.
+	1. To move N disks from Source (A) to Destination (B), we first
+	   need to move the top N-1 disks from Source (A) to Helper (C).
 
-	2. To move N disks:
-	   - First, move the top N-1 disks from source to helper (S to H).
-	   - Move the largest disk N from source to destination (S to D).
-	   - Finally, move the N-1 disks from helper to destination (H to D).
+	2. After moving N-1 disks, move the largest disk N from
+	   Source (A) to Destination (B).
 
-	3. The base case is N == 0.
-	   When there are no disks left to move, simply return.
+	3. Finally, move the N-1 disks from Helper (C) to
+	   Destination (B).
 
-	4. Each move is stored as:
-	   
-	       {disk, source, destination}
+	4. The base case is when N == 1. In this case, directly move
+	   the disk from Source (A) to Destination (B).
 
-	   For example:
-	       {1, 1, 3}
-
-	   means move disk 1 from Tower 1 to Tower 3.
-
-	5. An ArrayList is used to store all the moves because the
-	   number of moves is not known beforehand.
-
-	6. After recursion is complete, convert the ArrayList into
-	   the required int[][] array.
+	5. The same process is repeated recursively until all disks
+	   are moved to the destination.
 
 	Complexity Analysis
 
 	Time : O(2^N)
         The total number of moves is 2^N - 1.
 
-	Space : O(2^N)
-        The recursion stack requires O(N) space, while storing all
-	    the moves requires O(2^N) space.
-
-	
-	
+	Space : O(N)
+	   Space complexity is O(N) because the maximum recursion depth is N.
 */
 
 package Advanced.Topic07_Lab_Session_on_Recursion.Assignment;
@@ -47,52 +32,40 @@ public class TowerOfHanoi {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter the No. of Disks: ");
-        int A = sc.nextInt();
+        System.out.print("Enter the number of disks: ");
+        int N = sc.nextInt();
 
-        int[][] result = towerOfHanoi(A);
+        sc.nextLine(); // Consume the leftover newline
 
-        // Print every move
-        for (int i = 0; i < result.length; i++) {
-            System.out.println(Arrays.toString(result[i]));
-        }
+        System.out.print("Enter the source tower: ");
+        String A = sc.nextLine();
+
+        System.out.print("Enter the destination tower: ");
+        String B = sc.nextLine();
+
+        System.out.print("Enter the helper tower: ");
+        String C = sc.nextLine();
+
+        hanoi(N, A, B, C);
 
         sc.close();
     }
 
-    public static int[][] towerOfHanoi(int A) {
-        // list to store each move as {disk, source, destination}
-        ArrayList<int[]> moves = new ArrayList<>();
+    public static void hanoi(int N, String A, String B, String C) {
 
-        // start: move A disks from tower 1 to tower 3, using tower 2 as helper
-        // hanoi(N, S, H, D, moves)
-        hanoi(A, 1, 2, 3, moves);
+       // Base case: when only one disk is left, move it directly
+       if (N == 1) {
+          System.out.println("Move the disk " + N + " from " + A + " to " + B);
+          return;
+       }
 
-        // Convert ArrayList into the required 2D array
-        int[][] result = new int[moves.size()][3];
-        for (int i = 0; i < moves.size(); i++) {
-            result[i] = moves.get(i);
-        }
+       // Move N-1 disks from Source (A) to Helper (C)
+       hanoi(N - 1, A, C, B);
 
-        return result;
-    }
+       // Move the largest disk from Source (A) to Destination (B)
+       System.out.println("Move the disk " + N + " from " + A + " to " + B);
 
-    private static void hanoi(int N, int S, int H, int D, ArrayList<int[]> moves) {
-        // base case: no disks left to move
-        if (N == 0) {
-            return;
-        }
-
-        // step 1: move the top N-1 disks from S to H
-        // using D as the temporary helper
-        hanoi(N - 1, S, D, H, moves);
-
-        // step 2: move the Nth (largest remaining) disk
-        // directly from S to D
-        moves.add(new int[] { N, S, D });
-
-        // step 3: move the N-1 disks (now on H) from H to D
-        // using S as the temporary helper
-        hanoi(N - 1, H, S, D, moves);
+       // Move N-1 disks from Helper (C) to Destination (B)
+       hanoi(N - 1, C, B, A);
     }
 }

@@ -184,6 +184,125 @@ Therefore, the answer is:
 
 ## Problem Description
 
+You are given `N` disks and three towers: **A**, **B**, and **C**.
+
+Initially, all `N` disks are placed on the source tower **A** in decreasing order of size, with the largest disk at the bottom and the smallest disk at the top.
+
+Your task is to move all the disks from the **source tower A** to the **destination tower B**, using **tower C** as a helper.
+
+The following rules must be followed:
+
+1. Only one disk can be moved at a time.
+2. Only the top disk of a tower can be moved.
+3. A larger disk cannot be placed on top of a smaller disk.
+4. All disks must finally be moved from the source tower to the destination tower.
+5. The problem must be solved using recursion.
+
+For every move, print the disk number and the source and destination towers in the following format:
+
+```text
+Move the disk X from A to B
+```
+
+where `X` is the disk number.
+
+In the recursive function:
+
+- `A` represents the **Source** tower.
+- `B` represents the **Destination** tower.
+- `C` represents the **Helper** tower.
+
+## Problem Constraints
+
+- `1 <= N <= 15`
+
+## Input Format
+
+The input consists of four values:
+
+- The first line contains an integer `N`, representing the number of disks.
+- The second line contains the source tower.
+- The third line contains the destination tower.
+- The fourth line contains the helper tower.
+
+## Output Format
+
+Print every move required to transfer all `N` disks from the source tower to the destination tower.
+
+Each move should be printed in the format:
+
+```text
+Move the disk X from A to B
+```
+
+## Example Input 1
+
+```text
+3
+A
+B
+C
+```
+
+## Example Output 1
+
+```text
+Move the disk 1 from A to B
+Move the disk 2 from A to C
+Move the disk 1 from B to C
+Move the disk 3 from A to B
+Move the disk 1 from C to A
+Move the disk 2 from C to B
+Move the disk 1 from A to B
+```
+
+## Example Explanation 1
+
+There are 3 disks. The source is tower `A`, the destination is tower `B`, and tower `C` is used as the helper.
+
+The disks are moved recursively:
+
+- Move disk 1 from `A` to `B`.
+- Move disk 2 from `A` to `C`.
+- Move disk 1 from `B` to `C`.
+- Move disk 3 from `A` to `B`.
+- Move disk 1 from `C` to `A`.
+- Move disk 2 from `C` to `B`.
+- Move disk 1 from `A` to `B`.
+
+Therefore, all 3 disks are successfully moved from `A` to `B` in `7` moves.
+
+## Example Input 2
+
+```text
+2
+A
+C
+B
+```
+
+## Example Output 2
+
+```text
+Move the disk 1 from A to B
+Move the disk 2 from A to C
+Move the disk 1 from B to C
+```
+
+## Example Explanation 2
+
+There are 2 disks. The source is tower `A`, the destination is tower `C`, and tower `B` is used as the helper.
+
+First, disk 1 is moved from `A` to `B`. Then disk 2 is moved from `A` to `C`. Finally, disk 1 is moved from `B` to `C`.
+
+Thus, both disks are successfully moved from `A` to `C` in `3` moves.
+
+---
+
+# Q4. Tower of Hanoi - 1
+
+## Problem Description
+
 In the classic problem of the Towers of Hanoi, you have `3` towers numbered from `1` to `3` (left to right) and `A` disks numbered from `1` to `A` (top to bottom) of different sizes which can slide onto any tower.
 
 The puzzle starts with disks sorted in ascending order of size from top to bottom (i.e., each disk sits on top of an even larger one).
