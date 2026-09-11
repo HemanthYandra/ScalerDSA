@@ -184,56 +184,59 @@ Therefore, the answer is:
 
 ## Problem Description
 
-You are given `N` disks and three towers: **A**, **B**, and **C**.
+You are given `N` disks and three towers.
 
-Initially, all `N` disks are placed on the source tower **A** in decreasing order of size, with the largest disk at the bottom and the smallest disk at the top.
+Your task is to move all `N` disks from a **source tower** to a **destination tower** using a **helper tower**.
 
-Your task is to move all the disks from the **source tower A** to the **destination tower B**, using **tower C** as a helper.
+Initially, all the disks are placed on the source tower in decreasing order of size, with the largest disk at the bottom and the smallest disk at the top.
 
 The following rules must be followed:
 
 1. Only one disk can be moved at a time.
-2. Only the top disk of a tower can be moved.
+2. Only the top disk from any tower can be moved.
 3. A larger disk cannot be placed on top of a smaller disk.
-4. All disks must finally be moved from the source tower to the destination tower.
+4. All `N` disks must be moved from the source tower to the destination tower.
 5. The problem must be solved using recursion.
 
-For every move, print the disk number and the source and destination towers in the following format:
+For every move, print the disk number along with its source and destination towers in the following format:
 
 ```text
-Move the disk X from A to B
+Move the disk X from src to dest
 ```
 
 where `X` is the disk number.
 
-In the recursive function:
-
-- `A` represents the **Source** tower.
-- `B` represents the **Destination** tower.
-- `C` represents the **Helper** tower.
+The names of the three towers are given as input.
 
 ## Problem Constraints
 
 - `1 <= N <= 15`
+- The names of the three towers are distinct.
 
 ## Input Format
 
-The input consists of four values:
+The input consists of four lines:
 
 - The first line contains an integer `N`, representing the number of disks.
-- The second line contains the source tower.
-- The third line contains the destination tower.
-- The fourth line contains the helper tower.
+- The second line contains the name of the **source tower**.
+- The third line contains the name of the **destination tower**.
+- The fourth line contains the name of the **helper tower**.
 
 ## Output Format
 
 Print every move required to transfer all `N` disks from the source tower to the destination tower.
 
-Each move should be printed in the format:
+Each move should be printed in the following format:
 
 ```text
-Move the disk X from A to B
+Move the disk X from src to dest
 ```
+
+where:
+
+- `X` is the disk number.
+- `src` is the current source tower.
+- `dest` is the current destination tower.
 
 ## Example Input 1
 
@@ -258,19 +261,11 @@ Move the disk 1 from A to B
 
 ## Example Explanation 1
 
-There are 3 disks. The source is tower `A`, the destination is tower `B`, and tower `C` is used as the helper.
+There are 3 disks, with `A` as the source, `B` as the destination, and `C` as the helper.
 
-The disks are moved recursively:
+First, the top 2 disks are moved from `A` to `C`. Then disk 3 is moved from `A` to `B`. Finally, the 2 disks on `C` are moved to `B`.
 
-- Move disk 1 from `A` to `B`.
-- Move disk 2 from `A` to `C`.
-- Move disk 1 from `B` to `C`.
-- Move disk 3 from `A` to `B`.
-- Move disk 1 from `C` to `A`.
-- Move disk 2 from `C` to `B`.
-- Move disk 1 from `A` to `B`.
-
-Therefore, all 3 disks are successfully moved from `A` to `B` in `7` moves.
+Therefore, all 3 disks are transferred from `A` to `B` in `7` moves.
 
 ## Example Input 2
 
@@ -291,7 +286,7 @@ Move the disk 1 from B to C
 
 ## Example Explanation 2
 
-There are 2 disks. The source is tower `A`, the destination is tower `C`, and tower `B` is used as the helper.
+There are 2 disks, with `A` as the source, `C` as the destination, and `B` as the helper.
 
 First, disk 1 is moved from `A` to `B`. Then disk 2 is moved from `A` to `C`. Finally, disk 1 is moved from `B` to `C`.
 
