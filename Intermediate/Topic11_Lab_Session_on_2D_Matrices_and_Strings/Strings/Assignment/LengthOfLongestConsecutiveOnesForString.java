@@ -1,50 +1,48 @@
 /*
-	Approach
+    Approach
 
-	1. Count the total number of 1s present in the string.
+    1. Count the total number of 1s present in the string.
 
-	2. If all characters are already 1, return N because
-	   the entire string is already consecutive 1s.
+    2. If all characters are already 1, return N because
+       the entire string is already consecutive 1s.
 
-	3. Traverse the string and consider every 0 as the
-	   position where the swap can happen.
+    3. Traverse the string and consider every 0 as the
+       position where the swap can happen.
 
-	4. For each 0:
-	   - Count consecutive 1s on its left.
-	   - Count consecutive 1s on its right.
+    4. For each 0:
+       - Count consecutive 1s on its left.
+       - Count consecutive 1s on its right.
 
-	5. By swapping this 0 with a 1 outside the current
-	   group, we can connect the left and right groups.
+    5. By swapping the current 0 with an available 1
+       outside the combined group, we can connect
+       the consecutive 1s on its left and right.
 
-	6. The possible length is:
-	   l + r + 1
+    6. Calculate the possible length:
+           min(l + r + 1, totalOnes)
 
-	7. Since this is a swap, the total number of 1s
-	   remains unchanged. Therefore, the answer cannot
-	   exceed totalOnes.
+    7. Update maxLen with the maximum possible length.
 
-	8. Calculate:
-	   min(l + r + 1, totalOnes)
-
-	9. Update maxLen with the maximum possible length.
-
-	10. Return maxLen.
+    8. Return maxLen.
 
 
-	Complexity Analysis
+    Complexity Analysis
 
-	Time : O(N²)
-		- We traverse the string once to count total 1s.
-		- For every 0, we may traverse consecutive 1s
-		  on both sides.
-		- In the worst case, this can take O(N) for each 0.
+    Time : O(N)
+        - We traverse the string once to count total 1s.
+        - We traverse the string again to consider every 0.
+        - For each 0, we count consecutive 1s on its left
+          and right.
+        - Each consecutive group of 1s can be traversed
+          at most twice: once from each adjacent 0.
+        - Therefore, the combined iterations of both
+          while loops across the entire string are O(N).
 
-	Space : O(1)
-		- Only a few variables are used.
+    Space : O(1)
+        - Only a fixed number of variables are used.
 
-	Note: This can be optimized to O(N) using the sliding window technique.
+    Note: This can be done using the sliding window technique as well.
           Go here for the solution:
-	      Intermediate.Topic06_Sliding_Window_and_Contribution_Technique.Homework.Variable_Sliding_Window;
+          Intermediate.Topic06_Sliding_Window_and_Contribution_Technique.Homework.Variable_Sliding_Window;
 */
 
 package Intermediate.Topic11_Lab_Session_on_2D_Matrices_and_Strings.Strings.Assignment;
@@ -101,16 +99,8 @@ public class LengthOfLongestConsecutiveOnesForString {
 					j++;
 				}
 
-				int currentLen;
-
-				// If an extra 1 is available outside the
-				// current group, swap it with the current 0
-				if (totalOnes > l + r) {
-					currentLen = l + r + 1;
-				} else {
-					// No extra 1 is available for swapping
-					currentLen = l + r;
-				}
+				// Calculate the possible consecutive length
+				int currentLen = Math.min(l + r + 1, totalOnes);
 
 				// Update the maximum length
 				maxLen = Math.max(maxLen, currentLen);
