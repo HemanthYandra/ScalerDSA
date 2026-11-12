@@ -294,4 +294,74 @@ both more than `0` times. Answer:
 ```
 
 ---
+# Q4. Dishes
+
+## Problem Description
+
+There are **N** kinds of dishes in the wedding ceremony. You know that the i-th dish contains **A[i]** amount of protein.
+
+Sam likes some of the dishes among them and doesn't like the rest. If **B[i]** is 1, it means that Sam likes that dish, otherwise 0. If Sam likes the dish he will eat the dish, otherwise not.
+
+Now, as an elder brother, you can force him to eat **C consecutive dishes** no matter whether he likes them or not.
+
+Find the maximum protein Sam can get if you force him to eat C consecutive and eats the rest of the dishes of his choice.
+
+## Problem Constraints
+
+- 1 <= N <= 10^5
+- 1 <= A[i] <= 10^6
+- 0 <= C <= N
+- B[i] is either 0 or 1
+
+## Input Format
+
+The first argument contains the integer array **A**.
+
+The second argument contains the integer array **B**.
+
+The third argument contains the integer **C**.
+
+## Output Format
+
+Return a single integer denoting the maximum protein Sam can get.
+
+## Example Input
+
+**Input 1:**
+```text
+A = [1, 3, 5, 2, 5, 4]
+B = [1, 1, 0, 1, 0, 0]
+C = 3
+```
+
+**Input 2:**
+```text
+A = [1, 2]
+B = [1, 0]
+C = 0
+```
+
+## Example Output
+
+**Output 1:**
+```text
+16
+```
+
+**Output 2:**
+```text
+1
+```
+
+## Example Explanation
+
+**Explanation 1:**
+
+We see that among all the subarrays of size 3, if Sam is forced to eat the subarray from the 3rd dish, we can get the most amount of protein for Sam. In this case, he eats the 1st, 2nd, 3rd, 4th and 5th dish and gets a protein of 16.
+
+**Explanation 2:**
+
+Sam just eats everything of his choice. So he only eats the 1st dish and gets a protein of 1.
+
+---
 
