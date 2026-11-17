@@ -49,36 +49,24 @@ public class LengthOfTheLongestPalindromeSubstring {
             return 0;
         }
 
-        // Length of the longest palindrome
-        int maxLen = 1;
+        int maxLen = 1;     // Length of the longest palindrome
 
         // Convert the String into a character array
         char[] ch = A.toCharArray();
 
         // Odd Length Palindrome
         for (int mid = 0; mid < ch.length; mid++) {
-            // Expand around the current character
-            int len = expand(ch, mid, mid);
-
-            // Update the longest palindrome
-            if (len > maxLen) {
-                maxLen = len;
-            }
+            int len = expand(ch, mid, mid);         // Expand around the current character
+            maxLen = Math.max(maxLen, len);         // Update the longest palindrome
         }
 
         // Even Length Palindrome
         for (int mid = 0; mid < ch.length; mid++) {
-            // Expand around two adjacent characters
-            int len = expand(ch, mid, mid + 1);
-
-            // Update the longest palindrome
-            if (len > maxLen) {
-                maxLen = len;
-            }
+            int len = expand(ch, mid, mid + 1);     // Expand around two adjacent characters
+            maxLen = Math.max(maxLen, len);         // Update the longest palindrome
         }
 
-        // Return the length of the longest palindrome
-        return maxLen;
+        return maxLen;      // Return the length of the longest palindrome
     }
 
     public static int expand(char[] ch, int l, int r) {
@@ -94,7 +82,6 @@ public class LengthOfTheLongestPalindromeSubstring {
             r++;
         }
 
-        // Return the length of the palindrome
-        return r - l - 1;
+        return r - l - 1;       // Return the length of the palindrome
     }
 }
