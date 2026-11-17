@@ -1,42 +1,45 @@
 /*
 	Approach
 
-	Version 1:
+	Version 1: Expand Around Center (Inline)
+
 	1. Handle the edge case where the String is null or empty.
 
-	2. Treat every character as the center of an odd-length
-	   palindrome.
+	2. Convert the String into a character array so that
+	   characters can be accessed using array indexing.
 
-	3. Expand two pointers, l and r, from the center while
+	3. Treat every character as the center of an odd-length
+	   palindrome and every gap between adjacent characters
+	   as the center of an even-length palindrome.
+
+	4. Expand two pointers, l and r, from the center while
 	   the characters are equal.
+	   - l and r end one step past the palindrome.
 
-	4. Calculate the palindrome length and update the
-	   maximum length and starting index if a longer
-	   palindrome is found.
+	5. Calculate the length as r - l - 1.
+	   - If it is longer than maxLen, update maxLen and
+	     set start = l + 1.
 
-	5. Repeat the same process for even-length palindromes
-	   by taking two adjacent characters as the center.
-
-	6. Return the substring using the starting index and
-	   maximum palindrome length.
+	6. Return A.substring(start, start + maxLen).
 
 
-	Version 2:
+	Version 2: Expand Around Center (Helper Method)
+
 	1. Handle the edge case where the String is null or empty.
 
-	2. Use a separate expand() method to expand around a
-	   given center and return the palindrome length.
+	2. Convert the String into a character array.
 
-	3. For odd-length palindromes, use the current character
-	   as both the left and right center.
+	3. Use a separate expand() method that expands around a
+	   given center and returns the palindrome length.
 
-	4. For even-length palindromes, use two adjacent
-	   characters as the left and right center.
+	4. For odd-length palindromes, call expand(ch, mid, mid).
+	   - New start = mid - len / 2
 
-	5. Whenever a longer palindrome is found, calculate its
-	   starting index and update the maximum length.
+	5. For even-length palindromes, call expand(ch, mid, mid + 1).
+	   - New start = mid - len / 2 + 1
 
-	6. Return the longest palindromic substring.
+	6. Update maxLen and start only when a longer palindrome
+	   is found, then return A.substring(start, start + maxLen).
 
 
 	Complexity Analysis
@@ -72,12 +75,9 @@ public class LongestPalindromeSubstring {
         }
 
         int n = A.length();
-
-        // Starting Index of the longest palindrome
-        int start = 0;
-
-        // Length of the longest palindrome
-        int maxLen = 1;
+  
+        int start = 0;      // Starting Index of the longest palindrome
+        int maxLen = 1;     // Length of the longest palindrome
 
         // Convert the String into a character array
         char[] ch = A.toCharArray();
@@ -131,8 +131,7 @@ public class LongestPalindromeSubstring {
             }
         }
 
-        // Return the longest palindromic substring
-        return A.substring(start, start + maxLen);
+        return A.substring(start, start + maxLen);      // Return the longest palindromic substring
     }
 
     // Version 2
@@ -140,32 +139,30 @@ public class LongestPalindromeSubstring {
         if (A == null || A.length() == 0) {
             return "";
         }
-
-        // Starting Index of the longest palindrome
-        int start = 0;
-
-        // Length of the longest palindrome
-        int maxLen = 1;
+        
+        int start = 0;      // Starting Index of the longest palindrome
+        int maxLen = 1;     // Length of the longest palindrome
 
         // Convert the String into a character array
         char[] ch = A.toCharArray();
 
-        //Odd Length Palindrome
         for(int mid = 0; mid < ch.length; mid++) {
-            // Expand around the current character
-            int len = expand(ch, mid, mid);
+            // Odd Length Palindrome
+            int l = mid;
+            int r = mid;
+            int len = expand(ch, l, r);     // Expand around the current character
 
             // Update the longest palindrome
             if (len > maxLen) {
                 maxLen = len;
                 start = mid - len / 2;      // Only update start when a new max is found
             }
-        }
+        
 
-        //Even Length Palindrome
-        for(int mid = 0; mid < ch.length; mid++) {
-            // Expand around two adjacent characters
-            int len = expand(ch, mid, mid + 1);
+            //Even Length Palindrome
+            l = mid;
+            r = mid + 1;
+            len = expand(ch, l, r);        // Expand around two adjacent characters
 
             // Update the longest palindrome
             if  (len > maxLen) {
@@ -174,8 +171,7 @@ public class LongestPalindromeSubstring {
             }
         }
 
-        // Return the longest palindromic substring
-        return A.substring(start, start + maxLen);
+        return A.substring(start, start + maxLen);      // Return the longest palindromic substring
     }
 
     public static int expand(char[] ch, int l, int r) {
@@ -189,8 +185,7 @@ public class LongestPalindromeSubstring {
             l--;
             r++;
         }
-
-        // Return the length of the palindrome
-        return r - l - 1;
+        
+        return r - l - 1;       // Return the length of the palindrome
     }
 }
