@@ -1,19 +1,23 @@
 /*
 	Approach
 
+	Expand Around Center
+
 	1. Handle the edge case where the String is null or empty.
 
 	2. Convert the String into a character array so that
-	   characters can be accessed efficiently.
+	   characters can be accessed using array indexing.
 
 	3. Consider every character as the center of an
 	   odd-length palindrome and expand around it.
 
-	4. Consider every pair of adjacent characters as the
+	4. Consider every gap between adjacent characters as the
 	   center of an even-length palindrome and expand around it.
 
 	5. Use the expand() method to calculate the length of
 	   the palindrome for each center.
+	   - Expansion stops at a mismatch or an array boundary.
+	   - Length is r - l - 1, since l and r end one step past the palindrome.
 
 	6. Update maxLen whenever a longer palindrome is found.
 
@@ -54,15 +58,18 @@ public class LengthOfTheLongestPalindromeSubstring {
         // Convert the String into a character array
         char[] ch = A.toCharArray();
 
-        // Odd Length Palindrome
         for (int mid = 0; mid < ch.length; mid++) {
-            int len = expand(ch, mid, mid);         // Expand around the current character
-            maxLen = Math.max(maxLen, len);         // Update the longest palindrome
-        }
 
-        // Even Length Palindrome
-        for (int mid = 0; mid < ch.length; mid++) {
-            int len = expand(ch, mid, mid + 1);     // Expand around two adjacent characters
+            // Odd Length Palindrome
+            int l = mid;
+            int r = mid;
+            int len = expand(ch, l, r);         // Expand around the current character
+            maxLen = Math.max(maxLen, len);         // Update the longest palindrome
+        
+            // Even Length Palindrome
+            l = mid;
+            r = mid + 1;
+            len = expand(ch, l, r);     // Expand around two adjacent characters
             maxLen = Math.max(maxLen, len);         // Update the longest palindrome
         }
 
