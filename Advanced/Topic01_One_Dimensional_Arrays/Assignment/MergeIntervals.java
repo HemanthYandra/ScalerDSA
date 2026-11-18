@@ -1,29 +1,28 @@
 /*
 	Approach
 
-	The intervals are already sorted by start value, so any intervals
-	that need to be merged will always end up next to each other.
-	This means we only need a single pass, tracking the "current"
-	interval being built in two scalars (s1, e1) instead of peeking
-	into the result list.
+	Single Pass Merge with Running Interval
 
-	1. If A is empty, return an empty result.
+	1. Assume A is non-empty and sorted by start value, so any intervals
+	   that need to be merged are always adjacent.
 
-	2. Initialize s1, e1 with the first interval's start/end.
+	2. Initialize s1, e1 with the first interval's start and end. This is
+	   the "current" interval being built.
 
-	3. For every subsequent interval [s2, e2] in A:
-		- If s2 <= e1 (this interval overlaps or touches the
-		  current one), merge them:
+	3. For every subsequent interval [s2, e2] in A (i = 1 to N - 1):
+		- If s2 <= e1 (overlaps or touches the current interval), merge:
+		    s1 = min(s1, s2)
 		    e1 = max(e1, e2)
-		  (s1 = min(s1, s2) is unnecessary since A is sorted by
-		  start, so s1 <= s2 always holds)
-		- Otherwise, the interval doesn't overlap with current,
-		  so close off [s1, e1] into the result, then start a
-		  new current interval at [s2, e2].
+		  (the min on s1 is redundant since A is sorted by start, so
+		  s1 <= s2 always holds, but it is kept for safety)
+		- Otherwise (no overlap):
+		    - Create a temp list with [s1, e1] and add it to ans
+		    - Start a new current interval: s1 = s2, e1 = e2
 
-	4. After the loop, insert the last tracked [s1, e1] into result.
+	4. After the loop, the last tracked [s1, e1] is still pending, so
+	   add it to ans using a temp list.
 
-	5. Return the result list.
+	5. Return ans.
 
 	Example
 
@@ -31,23 +30,22 @@
 
 		Start: s1=1, e1=3
 
-		[2, 6]: 2 <= 3, merge -> e1 = 6        (s1=1, e1=6)
-		[8, 10]: 8 > 6, close [1,6], new current (s1=8, e1=10)
-		[15, 18]: 15 > 10, close [8,10], new current (s1=15, e1=18)
+		[2, 6]: 2 <= 3, merge -> s1=1, e1=6
+		[8, 10]: 8 > 6, add [1,6] to ans, new current -> s1=8, e1=10
+		[15, 18]: 15 > 10, add [8,10] to ans, new current -> s1=15, e1=18
 
-		After loop, insert [15, 18]
+		After loop, add [15, 18]
 
 		Final result: [ [1, 6], [8, 10], [15, 18] ]
 
 	Complexity Analysis
 
 	Time : O(N)
-		- Single pass over all N intervals.
+		Single pass over all N intervals, each handled in O(1).
 
 	Space : O(1) auxiliary
-		- Only s1, e1, s2, e2 scalars are used to track state;
-		  the result list itself is the required output, not
-		  extra space.
+		Only s1, e1, s2, e2 and a temp list are used to track state.
+		The ans list is the required output, not extra space.
 */
 
 package Advanced.Topic01_One_Dimensional_Arrays.Assignment;
@@ -93,14 +91,25 @@ public class MergeIntervals {
             }
             // no overlap -> close off current interval, start a new one
             else {
-                ans.add(new ArrayList<>(Arrays.asList(s1, e1)));
+                ArrayList<Integer> temp = new ArrayList<>();
+
+                temp.add(s1);
+                temp.add(e1);
+
+                ans.add(temp);
+
                 s1 = s2;
                 e1 = e2;
             }
         }
 
         // insert the last interval being tracked
-        ans.add(new ArrayList<>(Arrays.asList(s1, e1)));
+        ArrayList<Integer> temp = new ArrayList<>();
+
+        temp.add(s1);
+        temp.add(e1);
+
+        ans.add(temp);
 
         return ans;
     }
