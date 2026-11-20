@@ -1,39 +1,75 @@
 /*
     Approach
 
-    Prefix Max / Suffix Max (Running Max Variable)
+    Prefix Maximum / Suffix Maximum Arrays
 
-    1. For every index i, the amount of water that can be stored depends on
-       the tallest building on its left and the tallest building on its right.
+    1. For every index i, the amount of water that can be stored
+       depends on the tallest building on its left and the
+       tallest building on its right.
 
-    2. Create a left[] array where left[i] stores the maximum height of a
-       building from index 0 to i.
-       - Maintain a running variable maxL, updating it with A[i] as we
-         scan left to right, and store it into left[i] at each step.
+    2. Create two auxiliary arrays:
 
-    3. Create a right[] array where right[i] stores the maximum height of a
-       building from index i to n - 1.
-       - Maintain a running variable maxR, updating it with A[i] as we
-         scan right to left, and store it into right[i] at each step.
+       - lMax[] : stores the maximum height from index 0 to i.
+       - rMax[] : stores the maximum height from index i to N - 1.
 
-    4. For every index from 1 to n - 2, calculate the water stored above
-       that building using:
+    3. Calculate the Prefix Maximum (lMax[]):
 
-       waterStored = min(left[i], right[i]) - A[i]
+       - Initialize lMax[0] = A[0].
+       - Traverse the array from left to right, starting from i = 1.
+       - For every index, calculate:
 
-    5. Add the water stored at every index to get the total amount of
-       trapped rainwater.
+         lMax[i] = Math.max(lMax[i - 1], A[i])
+
+       This ensures that lMax[i] stores the tallest building
+       encountered from the beginning up to index i.
+
+    4. Calculate the Suffix Maximum (rMax[]):
+
+       - Initialize rMax[N - 1] = A[N - 1].
+       - Traverse the array from right to left, starting from
+         i = N - 2.
+       - For every index, calculate:
+
+         rMax[i] = Math.max(rMax[i + 1], A[i])
+
+       This ensures that rMax[i] stores the tallest building
+       encountered from index i to the end of the array.
+
+    5. Calculate the trapped rainwater:
+
+       - Traverse the array from index 0 to N - 1.
+       - Calculate the water level at each index using:
+
+         waterHeight = Math.min(lMax[i], rMax[i])
+
+       - Calculate the amount of water stored above the
+         current building using:
+
+         amountOfWater = waterHeight - A[i]
+
+       - Add the amount of water to the total:
+
+         ans += amountOfWater
+
+    6. After processing all indices, return ans containing
+       the total amount of trapped rainwater.
 
     Complexity Analysis
 
     Time : O(N)
-        We traverse the array three times to build the left[], right[]
-        arrays and calculate the total trapped water.
+        We traverse the array three times:
+        - First traversal to calculate lMax[].
+        - Second traversal to calculate rMax[].
+        - Third traversal to calculate the trapped rainwater.
+
+        Each traversal takes O(N) time.
 
     Space : O(N)
-        We use two auxiliary arrays, left[] and right[], each of size N.
+        We use two auxiliary arrays, lMax[] and rMax[],
+        each of size N.
 
-    Note: This can be further optimized using Two Pointers Technique.
+    Note: This approach can be further optimized to O(1)
+          auxiliary space using the Two Pointers Technique.
 */
 
 package Advanced.Topic03_Lab_Session_On_Arrays.Assignment;
@@ -54,48 +90,39 @@ public class RainWaterTrapped {
             A[i] = sc.nextInt();
         }
 
-        int result = solve(A);
+        int result = trap(A);
 
         System.out.println(result);
 
         sc.close();
     }
 
-    public static int solve(int[] A) {
-        int n = A.length;
+    public static int trap(int[] A) {
+        int N = A.length;
+        int ans = 0;
 
-        // left[i] stores the maximum height from index 0 to i
-        int[] left = new int[n];
+        int[] lMax = new int[N]; // To store Prefix Maximum
+        int[] rMax = new int[N]; // To store Suffix Maximum
 
-        // right[i] stores the maximum height from index i to n - 1
-        int[] right = new int[n];
-
-        int maxL = A[0];
-        int maxR = A[n - 1];
-
-        // Build the left maximum array
-        for (int i = 0; i < n; i++) {
-            maxL = Math.max(maxL, A[i]);
-            left[i] = maxL;
+        // Calculate Left Maximum
+        lMax[0] = A[0];
+        for (int i = 1; i < N; i++) {
+            lMax[i] = Math.max(lMax[i - 1], A[i]);
         }
 
-        // Build the right maximum array
-        for (int i = n - 1; i >= 0; i--) {
-            maxR = Math.max(maxR, A[i]);
-            right[i] = maxR;
+        // Calculate Right Maximum
+        rMax[N - 1] = A[N - 1];
+        for (int i = N - 2; i >= 0; i--) {
+            rMax[i] = Math.max(rMax[i + 1], A[i]);
         }
 
-        int totalWater = 0;
-
-        // Calculate water trapped at each index
-        for (int i = 1; i < n - 1; i++) {
-            // Water at index i is limited by the shorter of
-            // the tallest bars on its left and right
-            int waterStored = Math.min(left[i], right[i]) - A[i];
-
-            totalWater += waterStored;
+        // Calculate Trapped Water
+        for (int i = 0; i < N; i++) {
+            int waterHeight = Math.min(lMax[i], rMax[i]);
+            int amountOfWater = waterHeight - A[i];
+            ans += amountOfWater;
         }
 
-        return totalWater;
+        return ans;
     }
 }
