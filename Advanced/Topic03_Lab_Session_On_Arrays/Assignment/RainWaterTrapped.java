@@ -32,6 +32,8 @@
 
     Space : O(N)
         We use two auxiliary arrays, left[] and right[], each of size N.
+
+    Note: This can be further optimized using Two Pointers Technique.
 */
 
 package Advanced.Topic03_Lab_Session_On_Arrays.Assignment;
