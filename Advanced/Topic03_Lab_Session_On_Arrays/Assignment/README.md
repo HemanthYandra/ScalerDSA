@@ -139,11 +139,11 @@ The bars are arranged in decreasing order, so there is no taller bar on the left
 
 ---
 
-# Q2. Boundary Elements of N × M Matrix
+# Q2. Boundary in Clockwise Direction
 
 ## Problem Description
 
-Given a matrix `A` of size `N × M`, print all the boundary elements of the matrix in clockwise direction, starting from the top-left corner.
+Given a rectangular matrix A of N×M dimension. Return its boundary in clockwise direction.
 
 The boundary elements are the elements present on the first row, last column, last row, and first column of the matrix.
 
@@ -166,88 +166,64 @@ The boundary elements in clockwise direction are:
 
 ## Input Format
 
-* The first line contains two integers `N` and `M`, representing the number of rows and columns of the matrix.
-* The next `N` lines contain `M` integers each, representing the elements of the matrix.
+First argument A is a 2D integer array.
 
 ## Output Format
 
-Print all the boundary elements of the matrix in clockwise order, starting from the top-left corner.
+Return an array of integers denoting the boundary elements of the matrix.
 
 ## Constraints
 
-* `1 ≤ N, M ≤ 1000`
-* `-10^9 ≤ A[i][j] ≤ 10^9`
+* `1 <= N, M <= 10^3`
+* `1 <= A[i][j] <= 10^9`
 
 ## Example 1
 
-**Input:**
+**Input 1:**
 
 ```text
-4 5
-1 2 3 4 5
-6 7 8 9 10
-11 12 13 14 15
-16 17 18 19 20
+A = 
+[
+    [1, 2, 3]
+    [4, 5, 6]
+    [7, 8, 9]
+]
 ```
 
-**Output:**
+**Input 2:**
 
 ```text
-1 2 3 4 5 10 15 20 19 18 17 16 11 6
+A = 
+[
+    [1, 2, 3, 4, 5]
+    [6, 7, 8, 9, 1]
+    [1, 3, 4, 6, 2]
+]
 ```
 
-**Explanation:**
-
-Starting from `1`, traverse the boundary in clockwise direction:
-
-* Top row: `1 2 3 4 5`
-* Right column: `10 15 20`
-* Bottom row: `19 18 17 16`
-* Left column: `11 6`
-
-Thus, the boundary elements are:
+**Output 1:**
 
 ```text
-1 2 3 4 5 10 15 20 19 18 17 16 11 6
+[1, 2, 3, 6, 9, 8, 7, 4]
 ```
 
-## Example 2
-
-**Input:**
+**Output 2:**
 
 ```text
-3 4
-1 2 3 4
-5 6 7 8
-9 10 11 12
+[1, 2, 3, 4, 5, 1, 2, 6, 4, 3, 1, 6]
 ```
 
-**Output:**
+**Explanation 1:**
 
 ```text
-1 2 3 4 8 12 11 10 9 5
+The border elements in clockwise direction starting from top-left are [1, 2, 3, 6, 9, 8, 7, 4].
 ```
 
-**Explanation:**
-
-Starting from `1`, traverse the boundary in clockwise direction:
-
-* Top row: `1 2 3 4`
-* Right column: `8 12`
-* Bottom row: `11 10 9`
-* Left column: `5`
-
-Thus, the boundary elements are:
+**Explanation 2:**
 
 ```text
-1 2 3 4 8 12 11 10 9 5
+The border elements in clockwise direction starting from top-left are [1, 2, 3, 4, 5, 1, 2, 6, 4, 3, 1, 6].
 ```
-
-## Edge Cases to Note
-
-* **Single row (`N = 1`)**: print the row once, left to right (don't loop back).
-* **Single column (`M = 1`)**: print the column once, top to bottom (don't loop back).
-* **Single element (`N = 1, M = 1`)**: print that one element.
 
 ---
 

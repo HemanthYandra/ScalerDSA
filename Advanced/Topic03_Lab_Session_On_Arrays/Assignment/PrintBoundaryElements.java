@@ -1,76 +1,91 @@
 /*
 	Approach
 
-	Boundary Traversal Using Four Boundaries
+	Boundary Traversal Using Four Directions
 
-	1. Maintain four boundary markers to represent the current
-	   unvisited boundary of the matrix:
-	   
-	   - T (Top)    : represents the topmost unvisited row.
-	   - B (Bottom) : represents the bottommost unvisited row.
-	   - L (Left)   : represents the leftmost unvisited column.
-	   - R (Right)  : represents the rightmost unvisited column.
+	1. Calculate the number of rows (N) and columns (M) in the
+	   given matrix.
 
-	2. Initially, the boundaries are:
-	   
-	   - T = 0
-	   - B = n - 1
-	   - L = 0
-	   - R = m - 1
-	   
-	   These boundaries represent the complete matrix.
+	2. Handle the edge cases:
 
-	3. Traverse the top boundary from left to right.
-	   
-	   Print all elements from A[T][L] to A[T][R].
-	   After completing the traversal, increment T because
-	   the current top row has already been printed.
+	   - If N == 1, the matrix contains only one row.
+	     Copy all elements from left to right into the result array.
 
-	4. Traverse the right boundary from top to bottom.
-	   
-	   Print all elements from A[T][R] to A[B][R].
-	   The top-right corner is not printed again because T has
-	   already been incremented after traversing the top row.
-	   
-	   After completing the traversal, decrement R because
-	   the current right column has already been printed.
+	   - If M == 1, the matrix contains only one column.
+	     Copy all elements from top to bottom into the result array.
 
-	5. Traverse the bottom boundary from right to left.
-	   
-	   This traversal is performed only if T <= B, ensuring
-	   that a valid unvisited row still exists.
-	   
-	   Print all elements from A[B][R] to A[B][L].
-	   After completing the traversal, decrement B because
-	   the current bottom row has already been printed.
+	   These conditions ensure that every element is included
+	   exactly once in single-row and single-column matrices.
 
-	6. Traverse the left boundary from bottom to top.
-	   
-	   This traversal is performed only if L <= R, ensuring
-	   that a valid unvisited column still exists.
-	   
-	   Print all elements from A[B][L] to A[T][L].
-	   After completing the traversal, increment L because
-	   the current left column has already been printed.
+	3. For a matrix with more than one row and column, calculate
+	   the size of the boundary array using:
 
-	7. The boundary checks before traversing the bottom row and
-	   left column are important for handling matrices with a
-	   single row or a single column. They prevent elements from
-	   being printed multiple times.
+	   size = 2 * N + 2 * M - 4
 
-	8. By shrinking the boundaries after traversing each side,
-	   every boundary element is printed exactly once.
+	   This formula excludes the four corner duplicates.
+
+	4. Initialize three variables:
+
+	   - i   : represents the current row index.
+	   - j   : represents the current column index.
+	   - idx : represents the current position in the result array.
+
+	   Initially, i = 0, j = 0, and idx = 0.
+
+	5. Traverse the top boundary from left to right.
+
+	   Start from A[0][0] and traverse M - 1 elements.
+	   Store each element in the result array and increment j.
+
+	   The top-right corner is excluded from this traversal
+	   because it will be included in the next traversal.
+
+	6. Traverse the right boundary from top to bottom.
+
+	   Traverse N - 1 elements, storing each element in the
+	   result array and incrementing i.
+
+	   This includes the top-right corner and excludes the
+	   bottom-right corner.
+
+	7. Traverse the bottom boundary from right to left.
+
+	   Traverse M - 1 elements, storing each element in the
+	   result array and decrementing j.
+
+	   This includes the bottom-right corner and excludes the
+	   bottom-left corner.
+
+	8. Traverse the left boundary from bottom to top.
+
+	   Traverse N - 1 elements, storing each element in the
+	   result array and decrementing i.
+
+	   This includes the bottom-left corner and excludes the
+	   top-left corner.
+
+	9. Return the result array containing all boundary elements
+	   in clockwise direction, starting from the top-left corner.
+
+	10. By excluding the last element of each traversal and
+	    including it in the next traversal, every boundary
+	    element is stored exactly once without duplication.
 
 	Complexity Analysis
 
-	Time : O(N × M)
-		Every element on the boundary is visited at most once.
-		For an N × M matrix, the traversal takes O(N × M) in
-		the general case.
+	Time : O(N + M)
+		For a matrix with N rows and M columns, only the boundary
+		elements are traversed.
+		The total number of boundary elements is:
+		2 * N + 2 * M - 4.
 
 	Space : O(1)
-		Only a constant number of variables are used to maintain
-		the four boundaries and traversal indices.
+		- Only a constant number of variables are used for
+		  traversal. The output array is not considered
+		  auxiliary space.
+
+        - The result array requires O(N + M) space, but 
+          it is output space, not auxiliary space.
 */
 
 package Advanced.Topic03_Lab_Session_On_Arrays.Assignment;
@@ -94,53 +109,74 @@ public class PrintBoundaryElements {
             }
         }
 
-        solve(A);
+        int[] res = BoundaryElements(A);
+
+        System.out.println(Arrays.toString(res));
 
         sc.close();
     }
 
-    public static void solve(int[][] A) {
-        int n = A.length;
-        int m = A[0].length;
+    public static int[] BoundaryElements(int[][] A) {
+        int N = A.length;
+        int M = A[0].length;
 
-        int T = 0;          // top row index
-        int B = n - 1;      // bottom row index
-        
-        int L = 0;          // left column index
-        int R = m - 1;      // right column index
+        // Edge Case (Single Row)
+        if (N == 1) {
+            int[] ans = new int[M];
 
-        // Traverse top row: left to right
-        int row = T;
-        for(int col = L; col <= R; col++) {
-            System.out.print(A[row][col] + " ");
-        }
-        T++;    // Move the top boundary down
-
-        // Traverse right column: top to bottom
-        int col = R;
-        for(row = T; row <= B; row++) {
-            System.out.print(A[row][col] + " ");
-        }
-        R--;    // Move the right boundary left
-
-        // Traverse the bottom row from right to left
-        // Check that an unvisited row still exists
-        if (T <= B) {
-            row = B;
-            for (col = R; col >= L; col--) {
-                System.out.print(A[row][col] + " ");
+            for (int j = 0; j < M; j++) {
+                ans[j] = A[0][j];
             }
-            B--;    // Move the bottom boundary up
+
+            return ans;
         }
 
-        // Traverse the left column from bottom to top
-        // Check that an unvisited column still exists
-        if (L <= R) {
-            col = L;
-            for (row = B; row >= T; row--) {
-                System.out.print(A[row][col] + " ");
+        // Edge Case (Single Col)
+        if (M == 1) {
+            int[] ans = new int[N];
+
+            for (int i = 0; i < N; i++) {
+                ans[i] = A[i][0];
             }
-            L++;    // Move the left boundary right
+
+            return ans;
         }
+
+        int size = 2 * N + 2 * M - 4;
+        int[] ans = new int[size];
+
+        int i = 0;
+        int j = 0;
+        int idx = 0;
+
+        // Left to Right (Top Wall)
+        for (int k = 0; k < M - 1; k++) {
+            ans[idx] = A[i][j];
+            idx++;
+            j++;
+        }
+
+        // Top to Bottom (Right Wall)
+        for (int k = 0; k < N - 1; k++) {
+            ans[idx] = A[i][j];
+            idx++;
+            i++;
+        }
+
+        // Right to Left (Bottom Wall)
+        for (int k = 0; k < M - 1; k++) {
+            ans[idx] = A[i][j];
+            idx++;
+            j--;
+        }
+
+        // Bottom to Top (Left Wall)
+        for (int k = 0; k < N - 1; k++) {
+            ans[idx] = A[i][j];
+            idx++;
+            i--;
+        }
+
+        return ans;
     }
 }
