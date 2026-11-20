@@ -80,11 +80,12 @@
 		2 * N + 2 * M - 4.
 
 	Space : O(1)
-		- Only a constant number of variables are used for
+		  Only a constant number of variables are used for
 		  traversal. The output array is not considered
 		  auxiliary space.
-
-        - The result array requires O(N + M) space, but 
+          
+          Output Space : O(N + M)
+          The result array requires O(N + M) space, but 
           it is output space, not auxiliary space.
 */
 
